@@ -1,0 +1,971 @@
+/* ==============================Extra Small Device============================== */
+@media(max-width:310px){
+    .common_heading h1 {
+        font-size: 30px;   
+    }
+}
+@media(max-width:575.98px){
+.wraper{
+    height: 70px;
+    width: 92%;
+    display: inline-block;
+    padding-top: 20px;
+}
+.quote {
+    display: none;
+}
+.navbar-brand {
+    width: auto;
+}
+.navbar-brand img{
+    width: 50%;
+    padding-left: 10px;
+}
+#navbarSupportedContent {
+	width: auto;
+}
+.navbar-toggler{
+   margin-left: 33%;
+}
+.navbar .navbar-nav {
+	background: #5b1a1a;
+    width: 50%;
+    margin-left: 145px;
+    padding: 12px 0 5px 12px;
+}
+.nav-item .nav-link {
+	font-size: 18px;
+	font-weight: 500;
+	color: #fff;
+	line-height: 0px;
+	padding: 0 0 20px 0!important;
+    display: inline-block;
+}
+.nav-item .nav-link:hover{
+    color: aqua;
+}
+.navbar-toggler:focus {
+	box-shadow: none;
+}
+.bannar-text h1 {
+	padding-top: 150px;
+	font-size: 37px;
+	font-weight: 600;
+	line-height: 44px;
+}
+#bannar .shape1 {
+	top: 282px;
+	right: 0px;
+    left: 10px;
+}
+#bannar .shape2 {
+	display: none;
+}
+.search_main {
+	padding: 20px 20px;
+}
+.search_main .location select, .search_main .property_type select, .search_main .for_sale select {
+	padding: 10px 20px;
+	margin-bottom: 10px;
+}
+.search_main .location svg, .search_main .property_type i, .search_main .for_sale i {
+	top: 40%;
+	width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.search_btn {
+	padding: 10px 20px;
+}
+#search .search_btn a {
+	padding: 12px 66px;
+}
+.common_btn {
+	width: 40px;
+	height: 40px;	
+	font-size: 22px;
+}
+#find_properties_id .find_prev {
+	left: 55px;
+	top: 234px;
+}
+#find_properties_id .find_next {
+	right: 55px;
+	top: 234px;
+}
+.find_bottom_item {
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	height: 200px;
+	margin-bottom: 20px;
+}
+.find_bottom_item img{
+    height: 100%;
+}
+.find_bottom_item .overlay {
+	padding: 20px 20px;
+}
+#find_properties_id #pills-tab .nav-link {
+	width: 100%;
+	
+}
+#find_properties_id #pills-tab .nav-link img{
+	width: 100%!important;
+}
+#love_buy {
+	padding-top: 30px;
+}
+#love_buy .common_heading h3 {
+	padding: 0 0px;
+}
+.common_heading h1 {
+	padding: 0 20px;
+}
+#love_buy .rent_main {
+	padding-top: 30px;
+}
+#love_buy .rent_main .rent_item {
+	border-radius: 15px;
+	padding: 15px 15px 23px 15px;
+	margin-bottom: 20px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-o-border-radius: 15px;
+}
+.rent_main .rent_item .rent_details .price i {
+	padding-left: 53%;
+}
+.rent_main .rent_item .rent_details h4 {
+	font-size: 17px;
+	font-weight: 600;
+	padding-top: 15px;
+}
+.rent_main .rent_item .rent_details h5 {
+	padding-top: 10px;
+}
+.rent_main .rent_item .rent_details .bed-main {
+	padding-top: 10px;
+	padding-bottom: 15px;
+	justify-content: space-between;
+}
+.rent_main .rent_item .rent_details .price {
+	padding-top: 10px;
+}
+.hot_properties_btn {
+	margin-top: 20px;
+	margin-bottom: 0;
+}
+.hot_properties_btn a {
+	padding: 13px 35px;
+}
+#ready_rent {
+	padding: 40px 0;
+}
+#ready_rent .common_heading h3 {
+	padding: 0;
+    padding-top: 15px;
+}
+#ready_rent .rent_main {
+	padding-top: 30px;
+}
+#ready_rent .rent_main .rent_item {
+	border-radius: 15px;
+	padding: 15px 15px 23px 15px;
+	margin-bottom: 20px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	-ms-border-radius: 15px;
+	-o-border-radius: 15px;
+}
+.rent_main .rent_item .rent_img {
+	border-radius: 20px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+}
+#review .common_heading h3 {
+	padding: 0 0;
+}
+#hot_properties .common_heading h3 {
+	padding: 0 0px;
+}
+.hot_details_main {
+    left: 50%;
+    top: 230px;
+    transform: translateX(-50%);
+    width: 85%;
+    height: auto;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+}
+.hot_details_main .item {
+	padding: 15px;
+	height: 200px;
+}
+.hot_details_main .item h4 {
+	font-size: 20px;
+	line-height: 22px;
+}
+.hot_details_main .item h5 {
+	font-size: 14px;
+	padding-bottom: 8px;
+}
+.hot_details_main .item .price del{
+	font-size: 16px;
+	padding-left: 8px;
+	padding-right: 8px;
+}
+.hot_details_main .item .price h5 {
+	font-size: 18px;
+	padding-right: 8px;
+	padding-bottom: 0;
+}
+.hot_property_main .item {
+	height: 300px;
+}
+.hot_details_main .item .bed-main {
+	padding-bottom: 5px;
+}
+.hot_details_main .item .bed-main .bed_item {
+	padding-right: 8px;
+	font-size: 15px;
+	line-height: 22px;
+}
+.hot_details_main .item .price {
+	padding-top: 5px;
+}
+.hot_prev, .hot_next {
+	width: 35px;
+	height: 35px;
+	font-size: 20px;
+}
+.slide_arrows {
+	right: 25px;
+}
+#hot_properties .hot_properties_btn {
+	margin-top: 170px;
+}
+#hot_properties {
+	padding: 35px 0 50px 0;
+}
+.hot_proper{
+	margin-top: 30px!important;
+}
+#review {
+	padding: 50px 0 35px 0;
+}
+.review_item {
+	padding: 20px 20px;
+	margin-bottom: 20px;
+}
+#review .common_heading h1 {
+	font-size: 30px;
+	line-height: 40px;
+	padding-bottom: 20px;
+}
+.review_main {
+	margin-top: 30px;
+}
+.review_item .star {
+	padding-top: 10px;
+}
+.review_item p {
+	line-height: 22px;
+	padding: 8px 0;
+}
+.subscribe form input {
+	padding: 12px 15px;
+	border-radius: 8px;
+	width: 100%;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.subscribe form h4 {
+	padding: 10px 15px;
+	font-size: 18px;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+.our_update h4 {
+	line-height: 40px;
+	padding-bottom: 9px;
+}
+.our_update p {
+	padding-right: 0px;
+}
+#inbox {
+	padding: 30px 0;
+}
+#footer {
+	padding: 35px 0;
+}
+.pro_next h3 {
+	font-size: 35px;
+	line-height: 40px;
+	padding-bottom: 15px;
+}
+.pro_next p {
+	padding-right: 0;
+}
+.social_icon i {
+	height: 40px;
+	width: 40px;
+	margin-right: 10px;
+	margin-top: 15px;
+	font-size: 22px;
+	margin-bottom: 15px;
+}
+.f_heading {
+	font-size: 20px;
+	padding-bottom: 10px;
+}
+.location ul li a {
+	font-size: 15px;
+	line-height: 30px;
+}
+}
+@media(min-width:350px) and (max-width: 575px){
+	.rent_main .rent_item .rent_details .price i {
+		padding-left: 63%;
+	}
+}
+/* ============================== Small Device============================== */
+@media(min-width:576px) and (max-width:767.98px){
+	.wraper{
+		height: 70px;
+		width: 92%;
+		display: inline-block;
+		padding-top: 20px;
+	}
+	.quote {
+		display: none;
+	}
+	.navbar-brand {
+		width: auto;
+	}
+	.navbar-brand img{
+		width: 50%;
+		padding-left: 10px;
+	}
+	#navbarSupportedContent {
+		width: auto;
+	}
+	.navbar-toggler{
+	   margin-left: 40%;
+	}
+	.navbar .navbar-nav {
+		background: #5b1a1a;
+		width: 49%;
+		margin-left: 50%;
+		padding: 16px 0 8px 25px;
+	}
+	.nav-item .nav-link {
+		font-size: 22px;
+		font-weight: 500;
+		color: #fff;
+		line-height: 22px;
+		padding: 0 0 20px 0!important;
+		display: inline-block;
+	}
+	.nav-item .nav-link:hover{
+		color: aqua;
+	}
+	.navbar-toggler:focus {
+		box-shadow: none;
+	}
+	#bannar .shape1 {
+		top: 313px;
+		right: 0px;
+		width: 375px;
+	}
+	#bannar .shape2 {
+		top: 417px;
+		left: 26px;
+	}
+	.search_main .location select, .search_main .property_type select, .search_main .for_sale select {
+		/* padding: 10px 20px; */
+		margin-bottom: 15px;
+	}
+	.search_main .location svg, .search_main .property_type i, .search_main .for_sale i {
+		top: 40%;
+		width: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.common_btn {
+		width: 55px;
+		height: 55px;	
+		font-size: 30px;
+	}
+	#find_properties_id .find_prev {
+		left: 90px;
+		top: 203px;
+	}
+	#find_properties_id .find_next {
+		right: 90px;
+		top: 203px;
+	}
+	.find_item_slide {
+		margin-bottom: 35px;
+	}
+	.find_bottom_item {
+		height: 275px;
+	}
+	.find_bottom_item img{
+		height: 100%;
+	}
+	#love_buy {
+		padding-top: 30px;
+	}
+	#love_buy .common_heading h3 {
+		padding: 0 0;
+	}
+	#love_buy .rent_main {
+		padding-top: 30px;
+	}
+	.rent_main .rent_item .rent_details .price i {
+		padding-left: 71%;
+	}
+	#love_buy .rent_main .rent_item {
+		margin-bottom: 30px;
+	}
+	.hot_properties_btn {
+		margin-top: 30px;
+	}
+	#ready_rent {
+		padding: 45px 0;
+	}
+	#ready_rent .common_heading h3 {
+		padding: 0 0;
+	}
+	#ready_rent .rent_main {
+		padding-top: 30px;
+	}
+	#ready_rent .rent_main .rent_item {
+		margin-bottom: 25px;
+	}
+	#hot_properties {
+		padding: 50px 0;
+	}
+	#hot_properties .common_heading h3 {
+		padding: 0 0px;
+	}
+	.hot_details_main {
+		left: 50%;
+		transform: translateX(-50%);
+		top: 330px;
+		width: 440px;
+		height: 250px;
+		-webkit-transform: translateX(-50%);
+		-moz-transform: translateX(-50%);
+		-ms-transform: translateX(-50%);
+		-o-transform: translateX(-50%);
+}
+	.hot_details_main .item {
+		padding: 35px;
+	}
+	.hot_details_main .item h5 {
+		padding-bottom: 20px;
+	}
+	.hot_details_main .item .bed-main .bed_item {
+		padding-right: 25px;
+	}
+	.hot_property_main .item {
+		height: 450px;
+	}
+	#hot_properties .hot_properties_btn {
+		margin-top: 185px;
+		margin-bottom: 15px;
+	}
+	.subscribe form input {
+		width: 100%;
+	}
+	#review .common_heading h3 {
+		padding: 0 0;
+	}
+	#review {
+		padding: 50px 0;
+	}
+	.review_item {
+		padding: 25px 40px;
+		margin-bottom: 25px;
+	}
+	.social_icon i {
+		margin-top: 10px;
+		margin-bottom: 25px;
+	}
+	#footer {
+		padding: 50px 0;
+	}
+}
+/* ==============================Medium Device============================== */
+@media(min-width:768px) and (max-width:991.98px){
+	.wraper{
+		height: 90px;
+		width: 92%;
+		display: inline-block;
+		padding-top: 35px;
+	}
+	.quote {
+		display: none;
+	}
+	.navbar-brand {
+		width: auto;
+	}
+	.navbar-brand img{
+		width: 30%;
+		padding-left: 10px;
+	}
+	#navbarSupportedContent {
+		width: auto;
+	}
+	.navbar-toggler{
+	   margin-left: 60%;
+	}
+	.navbar .navbar-nav {
+		background: #5b1a1a;
+		width: 25%;
+		margin-left: 70%;
+		padding: 16px 0 8px 25px;
+	}
+	.nav-item .nav-link {
+		font-size: 22px;
+		font-weight: 500;
+		color: #fff;
+		line-height: 22px;
+		padding: 0 0 20px 0!important;
+		display: inline-block;
+	}
+	.nav-item .nav-link:hover{
+		color: aqua;
+	}
+	.navbar-toggler:focus {
+		box-shadow: none;
+	}
+	#search{
+		margin-top: -115px;
+		z-index: 111;
+		position: relative;
+		top: 0;
+		margin-bottom: 65px;
+	}
+	#find_properties_id .find_next {
+		right: 5%;
+		top: 9%;
+	}
+	#find_properties_id .find_prev {
+		left: 5%;
+		top: 9%;
+	}
+	.common_btn {
+		width: 55px;
+		height: 55px;
+	}
+	.find_bottom_item {
+		height: 300px;
+	}
+	.find_bottom_item img{
+		height: 100%;
+	}
+	.find_bottom_item .overlay {
+		padding: 25px 25px;
+	}
+	#love_buy {
+		padding-top: 30px;
+	}
+	#love_buy .common_heading h3 {
+		padding: 0 70px;
+	}
+	.rent_main .rent_item .rent_details .price i {
+		padding-left: 150px;
+	}
+	#love_buy .rent_main .rent_item {
+		margin-bottom: 24px;
+	}
+	.hot_properties_btn {
+		margin-top: 40px;
+		margin-bottom: 0px;
+	}
+	#ready_rent {
+		padding: 70px 0;
+	}
+	#ready_rent .common_heading h3 {
+		padding: 0 100px;
+	}
+	#ready_rent .rent_main .rent_item {
+		margin-bottom: 24px;
+	}
+	.hot_details_main {
+		left: -26px;
+		top: 325px;
+		width: 372px;
+		height: 260px;
+		padding: 30px 22px;
+	}
+	.hot_details_main .item {
+		padding: 0;
+	}
+	#hot_properties {
+		padding: 50px 0;
+	}
+	#hot_properties .common_heading h3 {
+		padding: 0 100px;
+	}
+	.hot_details_main .item .price h5 {
+		padding-right: 45px;
+	}
+	.hot_details_main .item .bed-main .bed_item {
+		padding-right: 17px;
+		font-size: 15px;
+	}
+	.hot_details_main .item h5 {
+		padding-bottom: 25px;
+	}
+	.hot_details_main .item .price del {
+		font-size: 22px;
+	}
+	.hot_details_main .item .price h5 {
+		font-size: 22px;
+	}
+	#hot_properties .hot_properties_btn {
+		margin-top: 65px;
+		margin-bottom: 25px;
+	}
+	#review .common_heading h3 {
+		padding: 0 100px;
+	}
+	#review {
+		padding: 50px 0;
+	}
+	.review_item {
+		padding: 30px 25px;
+		margin-bottom: 24px;
+	}
+	.subscribe form input {
+		width: 100%;
+	}
+	#footer {
+		padding: 80px 0;
+	}
+
+	.social_icon i {
+		margin-bottom: 35px;
+	}
+}
+/* ==============================Large Device============================== */
+@media(min-width:992px) and (max-width:1199.98px){
+.navbar-brand {
+	width: 17%;
+}
+.navbar .navbar-nav {
+	padding-top: 33px;
+}
+.nav-item .nav-link {
+	font-size: 19px;
+	padding: 0 15px !important;
+}
+.quote a {
+	padding: 10px 5px;
+	font-size: 20px;
+	font-weight: 500;
+	margin-top: 40px;
+    margin-bottom: 17px;
+}
+.wraper {
+	width: 95%;
+}
+.quote{
+	width: auto;
+}
+.quote .add_property{
+	margin-right: 10px;
+}
+.bannar-text h1 {
+	padding: 208px 50px 0 50px;
+}
+#bannar .shape1 {
+	top: 267px;
+}
+.search_btn a {
+    padding: 22px 40px;
+}
+.search_main .location svg, .search_main .property_type i, .search_main .for_sale i {
+	top: 50%;
+	width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.find_bottom_item img{
+	height: 100%;
+}
+.rent_main .rent_item .rent_details .price i {
+    padding-left: 112px;
+}
+#review .common_heading h3 {
+    padding: 0 190px;
+}
+.review_item {
+    padding: 46px 30px;
+}
+.subscribe form input {
+	width: 100%;
+}
+#footer {
+    padding: 90px 0;
+}
+
+
+}	
+/* ==============================Extra Large Device============================== */
+@media(min-width:1200px) and (max-width:1399.98px){
+	.wraper {
+		width: 95%;
+	}
+	.quote {
+		width: 28%;
+	}
+	.quote a {
+		padding: 16px 20px;
+	}
+	.navbar .navbar-nav {
+		padding-top: 45px;
+	}
+	.search_btn a {
+		padding: 30px 53px;
+	}
+}
+/* ==============================Extra Extra Large Device============================== */
+@media(min-width:1400px){
+	.quote {
+		display: flex;
+		justify-content: flex-start;
+	}
+	.quote a {
+		padding: 16px 25px;
+	}
+	.quote .add_property{
+		margin-right: 30px;
+	}
+	.navbar .navbar-nav {
+		padding-top: 50px;
+	}
+	.wraper {
+		width: 95%;
+	}
+} 
+/* ======================================================
+							Search 1 page
+========================================================= */
+
+@media(max-width:575.98px){
+	.search_rlst_main {
+		display: unset;
+	}
+	.search_rslt_head h4 {
+		font-size: 20px;
+		padding-top: 5px;
+		padding-bottom: 15px;
+	}
+	.search_rslt_icon .option {
+		width: auto;
+		height: 45px;
+		border-radius: 15px;
+		-webkit-border-radius: 7px;
+		-moz-border-radius: 15px;
+		-ms-border-radius: 15px;
+		-o-border-radius: 15px;
+	}
+	.search_rslt_icon .window {
+		height: 45px;
+		width: 45px;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+		line-height: 45px;
+		margin-left: 50px;
+}
+.search_rslt_icon {
+    margin-bottom: 15px;
+}
+	.search_rslt_icon .bars i {
+		height: 45px;
+		width: 45px;
+		border-radius: 10px;
+		line-height: 45px;
+		font-size: 25px;
+		margin-left: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+}
+	#search_page #bannar .shape2 {
+		display: block;
+		right: 10px!important;
+		left: auto;
+	}
+	#search_page .bannar-text h3 {
+		padding-bottom: 150px;
+	}
+	#search_page #love_buy {
+		padding-top: 40px;
+	}
+	#search_page .search_bar {
+		border-radius: 10px;
+		padding: 17px;
+		margin-bottom: 30px;
+	}
+	#search_page .keyword input {
+		border-radius: 10px;
+		height: 45px;
+		padding-left: 10px;
+	}
+	.accordion-button {
+		font-size: 17px;
+	}
+	#search_page .accordion-button {
+		padding: 8px 20px;
+	}
+	.accordion-collapse .accordion-body ul li {
+		font-size: 16px;
+		padding: 10px 0;
+	}
+	#search_page .keyword_btn {
+		padding-top: 15px;
+	}
+	#search_page .keyword_btn a {
+		padding: 8px 0;
+	}
+	.rent_main .rent_item .rent_details .price i {
+		padding-left: 47%;
+	}
+	#search_page #love_buy .rent_main {
+		padding-bottom: 30px;
+	}
+}
+@media(min-width:576px) and (max-width:767.98px) {
+	#search_page #bannar .shape2 {
+		display: block;
+		right: 10px!important;
+		left: auto;
+	}
+	#search_page #bannar .shape1{
+		left: 40px;
+	}
+	#search_page .bannar-text h3 {
+		padding-bottom: 170px;
+	}
+	#search_page #love_buy {
+		padding-top: 80px;
+	}
+	.search_rlst_main {
+		display: unset;
+	}
+	.search_rslt_head h4 {
+		padding-bottom: 20px;
+	}
+	.search_rslt_icon .window {
+		margin-left: 32%;
+	}
+	.search_rslt_icon {
+		margin-bottom: 30px;
+	}
+}
+@media(min-width:768px) and (max-width:991.98px){
+	#search_page #bannar .shape1 {
+		top: 143px;
+	}
+	.search_rlst_main {
+		padding-bottom: 30px;
+		padding-top: 40px;
+	}
+	#search_page #love_buy .rent_main {
+		padding-bottom: 70px;
+	}
+	#search_page #love_buy {
+		padding-top: 80px;
+	}
+}
+@media(min-width:992px) and (max-width:1199.98px){
+	#search_page .navbar .navbar-nav {
+		padding-bottom: 20px;
+	}
+}
+/* ======================================================
+							Search 2 page
+========================================================= */
+@media(max-width:575.98px){
+	#search_page .pagination {
+		width: 100%;
+		height: 38px;
+		margin-top: 0;
+		background: none;
+	}
+	#search_page .pagination td {
+		padding: 0 13px;
+		font-size: 17px;
+	}
+	#search_page .pagination table{
+		margin: 0 auto;
+	}
+}
+/* ======================================================
+							Search 3 page
+========================================================= */
+@media(max-width:575.98px){
+	#search_3 .rent_item .rent_img {
+		height: 155px;
+		width: 100%;
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		-ms-border-radius: 10px;
+		-o-border-radius: 10px;
+	}
+	#search_3 .rent_item .rent_details {
+		padding-left: 0;
+	}
+
+
+
+
+
+}
+@media(min-width:576px) and (max-width:767.98px){
+	#search_3 .rent_item .rent_img {
+		width: 100%;
+	}
+	#love_buy .rent_main .rent_item {
+		padding: 30px 60px;
+	}
+}
+@media(min-width:768px) and (max-width:991.98px){
+	#search_3 .rent_item .rent_img {
+		width: 260px;
+	}
+	#search_3 .rent_item .rent_details .price i{
+		padding-left: 215px;
+	}
+}
