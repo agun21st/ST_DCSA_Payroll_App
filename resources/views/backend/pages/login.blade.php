@@ -2,9 +2,10 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg">
     <head>
         <meta charset="utf-8" />
-        <title>Sign In | PropertyNext - Admin & Dashboard Template</title>
+        <title>Sign In | Bangladesh Open University Payroll System</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="author" content="Md.M.H.Razib DCSA-IST-2019 Mobile:+8801712834621  | Web Developer @ Creative IT Institution">
         <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
         <link rel="stylesheet" href="{{asset('css/flash.css')}}">
         <!-- App favicon -->
@@ -42,7 +43,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="text-center mt-sm-5 mb-4 text-white-50">
+                            <div class="text-center mt-sm-5 mb-4 text-white-50" style="visibility:hidden;">
                                 <div>
                                     <a href="{{url('/')}}" class="d-inline-block auth-logo" style="background: rgb(255,255,255,0.7);border-radius: 10px;padding: 10px 20px;">
                                         <img src="/images/propertyNext-logo1.png" alt="" height="35">
@@ -59,9 +60,11 @@
                             <div class="card mt-4">
 
                                 <div class="card-body p-4">
-                                    <div class="text-center mt-2">
-                                        <h5 class="text-primary">Welcome Back !</h5>
-                                        <p class="text-muted">Sign in to continue to PropertyNext.</p>
+                                    <div class="text-center">
+                                        <a href="{{url('/')}}" class="d-inline-block auth-logo">
+                                            <img src="/assets/images/bou_logo.webp" alt="" height="80">
+                                        </a>
+                                        <h5 class="text-primary mt-4">Payroll Management System</h5>
                                     </div>
                                     <div class="p-2 mt-4">
                                         <form action="{{route('admin.login')}}" method="post" id="admin-login-form">
@@ -121,11 +124,6 @@
                                 <!-- end card body -->
                             </div>
                             <!-- end card -->
-
-                            <div class="mt-4 text-center">
-                                <p class="mb-0">Don't have an account ? <a href="javascript:void(0)" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
-                            </div>
-
                         </div>
                     </div>
                     <!-- end row -->
@@ -140,7 +138,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="text-center">
-                                <p class="mb-0 text-muted">&copy; <script>document.write(new Date().getFullYear())</script> PropertyNext. Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="https://dmarkcy.com/" class="fw-semibold text-primary text-decoration-underline"> dMarkcy </a></p>
+                                <p class="mb-0 text-muted">&copy; <script>document.write(new Date().getFullYear())</script> BOU Payroll. Crafted with <i class="mdi mdi-heart text-danger"></i> by <a href="tel:+8801712834621" class="fw-semibold text-primary text-decoration-underline"> Md.M.H. Razib DCSA-IST-2019 </a></p>
                             </div>
                         </div>
                     </div>

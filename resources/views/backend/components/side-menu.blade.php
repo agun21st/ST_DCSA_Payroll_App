@@ -5,19 +5,19 @@
         <!-- Dark Logo-->
         <a href="index.html" class="logo logo-dark">
             <span class="logo-sm">
-                    <img src="/images/propertyNext-logo1.png" alt="" height="22" style="-webkit-filter: invert(1);filter: invert(1);">
-                </span>-
+                    <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
+                </span>
             <span class="logo-lg">
-                    <img src="/images/propertyNext-logo1.png" alt="" height="22" style="-webkit-filter: invert(1);filter: invert(1);">
+                    <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
                 </span>
         </a>
         <!-- Light Logo-->
         <a href="index.html" class="logo logo-light">
             <span class="logo-sm">
-                    <img src="/images/propertyNext-logo1.png" alt="" height="22" style="-webkit-filter: invert(1);filter: invert(1);">
+                    <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
                 </span>
             <span class="logo-lg">
-                    <img src="/images/propertyNext-logo1.png" alt="" height="22" style="-webkit-filter: invert(1);filter: invert(1);">
+                    <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
                 </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">

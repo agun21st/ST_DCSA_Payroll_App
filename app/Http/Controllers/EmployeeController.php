@@ -43,6 +43,8 @@ class EmployeeController extends Controller
             'name' => ['required'],
             'email' => ['required','unique:employees,email'],
             'basic_salary' => ['required'],
+            'gross_salary' => ['required'],
+            'net_salary' => ['required'],
         ]);
 
         DB::transaction(function () {

@@ -60,7 +60,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');
 
         // Logout Route
-        Route::post('/logout', [AdminController::class, 'destroy'])->name('logout');
+        Route::post('/logout', [AdminController::class, 'logout'])->name('logout');
     });
 });
 
