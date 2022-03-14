@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Create Employee</h4>
+                        <h4 class="mb-sm-0">Edit Employee</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Employees</a></li>
-                                <li class="breadcrumb-item active">Create Employee</li>
+                                <li class="breadcrumb-item active">Edit Employee</li>
                             </ol>
                         </div>
 
@@ -20,8 +20,16 @@
                 </div>
             </div>
             <!-- end page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="mb-3">
+                        <a href="{{route('admin.employee-list')}}" class="btn btn-primary"><i
+                                class="mdi mdi-keyboard-backspace align-bottom me-1"></i> All Employee</a>
+                    </div>
+                </div>
+            </div>
 
-            <form action="{{route('admin.add-employee')}}" method="post" id="create-employee-form" enctype="multipart/form-data">
+            <form action="{{route('admin.update-employee')}}" method="post" id="create-employee-form" enctype="multipart/form-data">
                 @if (Session::get('fail'))
                     <!-- Danger Alert -->
                     <div class="alert alert-danger alert-dismissible alert-label-icon label-arrow shadow fade show" role="alert">
@@ -41,7 +49,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="employee-name-input">Employee Name*</label>
-                                            <input onclick="this.select();" type="text" name="name" class="form-control" id="employee-name-input" placeholder="Enter employee name" value="{{ old('name') }}" required>
+                                            <input onclick="this.select();" type="text" name="name" class="form-control" id="employee-name-input" placeholder="Enter employee name" value="{{ $getEmployee->name }}" required>
                                             <small class="text-danger">@error('name')
                                                 {{ $message }}
                                             @enderror</small>
@@ -50,7 +58,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="employee-id-input">Employee ID*</label>
-                                            <input onclick="this.select();" type="text" name="employee_id" class="form-control" id="employee-id-input" placeholder="Enter employee id" value="ID-{{rand(10000, 99999)}}" required>
+                                            <input onclick="this.select();" type="text" name="employee_id" class="form-control" id="employee-id-input" placeholder="Enter employee id" value="{{$getEmployee->employee_id}}" required>
                                             <small class="text-danger">@error('employee_id')
                                                 {{ $message }}
                                             @enderror</small>
@@ -60,8 +68,8 @@
                                         <div class="mb-3">
                                             <label for="choices-school-input" class="form-label">School Name*</label>
                                             <select class="form-select" name="school" id="choices-school-input" data-choices data-choices-search-false required>
-                                                <option value="IST" selected>IST</option>
-                                                <option value="DU">DU</option>
+                                                <option value="IST" {{$getEmployee->school==="IST"?"selected":""}}>IST</option>
+                                                <option value="DU" {{$getEmployee->school==="DU"?"selected":""}}>DU</option>
                                             </select>
                                         </div>
                                     </div>
@@ -70,8 +78,8 @@
                                             <label for="designation-input" class="form-label">Designation / Position*</label>
                                             <select class="form-select" name="designation" id="designation-input" data-choices data-choices-search-false required>
                                                 <option value="Assistant Professor" selected>Assistant Professor</option>
-                                                <option value="Dean">Dean</option>
-                                                <option value="Teacher">Teacher</option>
+                                                <option value="Dean" {{$getEmployee->designation==="Dean"?"selected":""}}>Dean</option>
+                                                <option value="Teacher" {{$getEmployee->designation==="Teacher"?"selected":""}}>Teacher</option>
                                             </select>
                                         </div>
                                     </div>
@@ -79,14 +87,14 @@
                                         <!-- Base Radios -->
                                         <p class="mb-1"><strong>Employee Type*</strong></p>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="job_type" id="flexRadioDefault1" checked value="Full time">
+                                            <input class="form-check-input" type="radio" name="job_type" id="flexRadioDefault1" {{$getEmployee->job_type==="Full time"?"checked":""}} value="Full time">
                                             <label class="form-check-label" for="flexRadioDefault1">
                                                 Full time
                                             </label>
                                         </div>
 
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="job_type" id="flexRadioDefault2" value="Part time">
+                                            <input class="form-check-input" type="radio" name="job_type" id="flexRadioDefault2" value="Part time" {{$getEmployee->job_type==="Part time"?"checked":""}}>
                                             <label class="form-check-label" for="flexRadioDefault2">
                                                 Part time
                                             </label>
@@ -95,19 +103,19 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="joing-date-input" class="form-label">Joining Date*</label>
-                                            <input type="text" name="joining_date" id="joing-date-input" class="form-control" data-provider="flatpickr" data-date-format="d M, Y" data-deafult-date="{{date('d M, Y')}}" required>
+                                            <input type="text" name="joining_date" id="joing-date-input" class="form-control" data-provider="flatpickr" data-date-format="d M, Y" data-deafult-date="{{$getEmployee->joining_date}}" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="date-of-birth-input" class="form-label">Date of birth*</label>
-                                            <input type="text" name="dob" id="date-of-birth-input" class="form-control" data-provider="flatpickr" data-date-format="d M, Y" placeholder="Date of birth" required>
+                                            <input type="text" name="dob" id="date-of-birth-input" class="form-control" data-provider="flatpickr" data-date-format="d M, Y" placeholder="Date of birth" data-deafult-date="{{$getEmployee->dob}}" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="phone-number-input">Phone Number</label>
-                                            <input onclick="this.select();" type="text" name="phone" class="form-control" id="phone-number-input" placeholder="(+88) Employee phone number" value="{{ old('phone') }}">
+                                            <input onclick="this.select();" type="text" name="phone" class="form-control" id="phone-number-input" placeholder="(+88) Employee phone number" value="{{ $getEmployee->phone }}">
                                             <small class="text-danger">@error('phone')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -116,7 +124,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="email-input">Email*</label>
-                                            <input onclick="this.select();" type="email" name="email" class="form-control" id="email-input" placeholder="example@gmail.com" value="{{ old('email') }}" required>
+                                            <input onclick="this.select();" type="email" name="email" class="form-control" id="email-input" placeholder="example@gmail.com" value="{{ $getEmployee->email }}" required>
                                             <small class="text-danger">@error('email')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -125,30 +133,30 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="address-input" class="form-label">Mailing Address*</label>
-                                            <textarea id="address-input" name="address" class="form-control" placeholder="Employee's mailing address" rows="1">{{ old('address') }}</textarea>
+                                            <textarea id="address-input" name="address" class="form-control" placeholder="Employee's mailing address" rows="1">{{ $getEmployee->address }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="educational-qualification-input" class="form-label">Educational Qualification*</label>
                                             <select class="form-select" name="qualification" id="educational-qualification-input" data-choices data-choices-search-false required>
-                                                <option value="MSc" selected>MSc</option>
-                                                <option value="BSc">BSc</option>
-                                                <option value="HSC">HSC</option>
-                                                <option value="SSC">SSC</option>
+                                                <option value="MSc" {{$getEmployee->qualification==="MSc"?"selected":""}}>MSc</option>
+                                                <option value="BSc" {{$getEmployee->qualification==="BSc"?"selected":""}}>BSc</option>
+                                                <option value="HSC" {{$getEmployee->qualification==="HSC"?"selected":""}}>HSC</option>
+                                                <option value="SSC" {{$getEmployee->qualification==="SSC"?"selected":""}}>SSC</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="job-description-input" class="form-label">Job Description</label>
-                                            <textarea id="job-description-input" name="job_description" class="form-control" placeholder="Employee's job description" rows="1">{{ old('job_description') }}</textarea>
+                                            <textarea id="job-description-input" name="job_description" class="form-control" placeholder="Employee's job description" rows="1">{{ $getEmployee->job_description }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="job-experience-input">Job Experience</label>
-                                            <input onclick="this.select();" type="text" name="job_experience" class="form-control" id="job-experience-input" placeholder="Employee Job Experience" value="{{ old('job_experience') }}">
+                                            <input onclick="this.select();" type="text" name="job_experience" class="form-control" id="job-experience-input" placeholder="Employee Job Experience" value="{{ $getEmployee->job_experience }}">
                                             <small class="text-danger">@error('job_experience')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -157,13 +165,13 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="publications-input" class="form-label">Publications</label>
-                                            <textarea id="publications-input" name="publications" class="form-control" placeholder="Employee's publications" rows="1">{{ old('publications') }}</textarea>
+                                            <textarea id="publications-input" name="publications" class="form-control" placeholder="Employee's publications" rows="1">{{ $getEmployee->publications }}</textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="outstanding_quality-input">Outstanding Quality</label>
-                                            <input onclick="this.select();" type="text" name="outstanding_quality" class="form-control" id="outstanding_quality-input" placeholder="Employee outstanding quality" value="{{ old('outstanding_quality') }}">
+                                            <input onclick="this.select();" type="text" name="outstanding_quality" class="form-control" id="outstanding_quality-input" placeholder="Employee outstanding quality" value="{{ $getEmployee->outstanding_quality }}">
                                             <small class="text-danger">@error('outstanding_quality')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -178,6 +186,18 @@
                                             @enderror</small>
                                         </div>
                                     </div>
+                                    @if (isset($getEmployee->employee_image))
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3">
+                                                <label for="photo-input" class="form-label">Employee Image</label>
+                                                <img src="{{$getEmployee->employee_image}}" id="photo-input" alt="image" height="50" />
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -195,7 +215,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="basic-salary-input">Basic Salary* (৳)</label>
-                                            <input onclick="this.select();" type="number" name="basic_salary" class="form-control" id="basic-salary-input" placeholder="Empoyee Basic Salary" value="15000"  oninput="myAutoFill()" required>
+                                            <input onclick="this.select();" type="number" name="basic_salary" class="form-control" id="basic-salary-input" placeholder="Empoyee Basic Salary" value="{{$getEmployee->basic_salary}}" oninput="myAutoFill()" required>
                                             <small class="text-danger">@error('basic_salary')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -204,7 +224,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="increment-number-input">Increment number*</label>
-                                            <input onclick="this.select();" type="number" name="increment" class="form-control" id="increment-number-input" placeholder="Increment number" value="1" required>
+                                            <input onclick="this.select();" type="number" name="increment" class="form-control" id="increment-number-input" placeholder="Increment number" value="{{$getEmployee->increment}}" required>
                                             <small class="text-danger">@error('increment')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -213,7 +233,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="working-hour-input">Working hour*</label>
-                                            <input onclick="this.select();" type="number" name="working_hour" class="form-control" id="working-hour-input" placeholder="Working hour" value="8" required>
+                                            <input onclick="this.select();" type="number" name="working_hour" class="form-control" id="working-hour-input" placeholder="Working hour" value="{{$getEmployee->working_hour}}" required>
                                             <small class="text-danger">@error('working_hour')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -221,8 +241,8 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="mb-3">
-                                            <label class="form-label" for="over-time-rate-input">Hourly rate*</label>
-                                            <input onclick="this.select();" type="number" name="overtime_rate" class="form-control" id="over-time-rate-input" placeholder="Over time rate" value="150" required>
+                                            <label class="form-label" for="over-time-rate-input">Over time rate*</label>
+                                            <input onclick="this.select();" type="number" name="overtime_rate" class="form-control" id="over-time-rate-input" placeholder="Over time rate" value="{{$getEmployee->overtime_rate}}" required>
                                             <small class="text-danger">@error('overtime_rate')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -241,7 +261,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="house-rent-input">House Rent</label>
-                                            <input onclick="this.select();" type="number" name="house_rent" class="form-control" id="house-rent-input" placeholder="House Rent" value="7500" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="house_rent" class="form-control" id="house-rent-input" placeholder="House Rent" value="{{$getEmployee->house_rent}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('house_rent')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -250,7 +270,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="medical-input">Medical Allowance</label>
-                                            <input onclick="this.select();" type="number" name="medical" class="form-control" id="medical-input" placeholder="Medical" value="1250" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="medical" class="form-control" id="medical-input" placeholder="Medical" value="{{$getEmployee->medical}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('medical')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -259,7 +279,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="conveyance-input">Conveyance</label>
-                                            <input onclick="this.select();" type="number" name="conveyance" class="form-control" id="conveyance-input" placeholder="Conveyance" value="1250" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="conveyance" class="form-control" id="conveyance-input" placeholder="Conveyance" value="{{$getEmployee->conveyance}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('conveyance')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -268,7 +288,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="special_bonus-input">Special Bonus</label>
-                                            <input onclick="this.select();" type="number" name="special_bonus" class="form-control" id="special_bonus-input" placeholder="Special bonus" value="1000" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="special_bonus" class="form-control" id="special_bonus-input" placeholder="Special bonus" value="{{$getEmployee->special_bonus}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('special_bonus')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -287,7 +307,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="provident-fund-input">Provident Fund</label>
-                                            <input onclick="this.select();" type="number" name="provident_fund" class="form-control" id="provident-fund-input" placeholder="Provident Fund" value="1500" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="provident_fund" class="form-control" id="provident-fund-input" placeholder="Provident Fund" value="{{$getEmployee->provident_fund}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('provident_fund')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -296,7 +316,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="gas-input">Gas Bill</label>
-                                            <input onclick="this.select();" type="number" name="gas" class="form-control" id="gas-input" placeholder="Gas Bill" value="500" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="gas" class="form-control" id="gas-input" placeholder="Gas Bill" value="{{$getEmployee->gas}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('gas')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -305,7 +325,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="electricity-input">Electricity Bill</label>
-                                            <input onclick="this.select();" type="number" name="electricity" class="form-control" id="electricity-input" placeholder="Electricity Bill" value="1000" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="electricity" class="form-control" id="electricity-input" placeholder="Electricity Bill" value="{{$getEmployee->electricity}}"  oninput="myAutoFill()" required>
                                             <small class="text-danger">@error('electricity')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -314,7 +334,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="water-input">Water Bill</label>
-                                            <input onclick="this.select();" type="number" name="water" class="form-control" id="water-input" placeholder="Water Bill" value="450" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="water" class="form-control" id="water-input" placeholder="Water Bill" value="{{$getEmployee->water}}" oninput="myAutoFill()" required>
                                             <small class="text-danger">@error('water')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -323,7 +343,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="insurance-input">Insurance</label>
-                                            <input onclick="this.select();" type="number" name="insurance" class="form-control" id="insurance-input" placeholder="Insurance" value="1250"  oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="insurance" class="form-control" id="insurance-input" placeholder="Insurance" value="{{$getEmployee->insurance}}" oninput="myAutoFill()" required>
                                             <small class="text-danger">@error('insurance')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -332,7 +352,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="welfare-input">Welfare</label>
-                                            <input onclick="this.select();" type="number" name="welfare" class="form-control" id="welfare-input" placeholder="Welfare" value="200" oninput="myAutoFill()"  required>
+                                            <input onclick="this.select();" type="number" name="welfare" class="form-control" id="welfare-input" placeholder="Welfare" value="{{$getEmployee->welfare}}"  oninput="myAutoFill()"  required>
                                             <small class="text-danger">@error('welfare')
                                                 {{ $message }}
                                                 @enderror</small>
@@ -362,7 +382,8 @@
                         </div>
                         <div class="mb-3">
                             <input type="hidden" name="entry_by" value="{{Auth::user()->id}}" required>
-                            <button type="submit" class="btn btn-primary w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Submit</button>
+                            <input type="hidden" name="id" value="{{$getEmployee->id}}" required>
+                            <button type="submit" class="btn btn-primary w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Update</button>
                         </div>
                         <!-- end card -->
                     </div>
@@ -375,7 +396,7 @@
     <!-- End Page-content -->
 @endsection
 @section('upHead')
-<title>Create Employee | Bangladesh Open University</title>
+<title>Edit Employee | Bangladesh Open University</title>
 <!-- Plugins css -->
 <link href="/assets/libs/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 @endsection
@@ -429,6 +450,7 @@
             });
         });
         function myAutoFill(){
+            console.log("I am fired")
             let gross_salary = 0;
             let net_salary = 0;
             let basic   = document.getElementById("basic-salary-input").value;

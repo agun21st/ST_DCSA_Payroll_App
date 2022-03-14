@@ -19,6 +19,9 @@ use App\Http\Controllers\Admin\ApartmentController;
 // Route::get('/', function () {
 //     return view("frontend.pages.home");
 // });
+Route::get('/', function () {
+    return redirect('/admin');
+});
 // Route::get('/search-property', function () {
 //     return view('frontend.pages.search-property');
 // });
@@ -58,6 +61,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/show-employee/{id}', [EmployeeController::class, 'show'])->name('show-employee');
         Route::get('/create-employee', [EmployeeController::class, 'create'])->name('create-employee');
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');
+        Route::post('/update-employee', [EmployeeController::class, 'update'])->name('update-employee');
 
         // Logout Route
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin\Employee;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class EmployeeController extends Controller
 {
@@ -48,7 +49,9 @@ class EmployeeController extends Controller
         ]);
 
         DB::transaction(function () {
-            $createOffer = Employee::create(request()->all());
+
+            $createOffer = Employee::create(request()->except(['employee_image']));
+
             if (request()->hasFile('employee_image')) {
                 //* set file store folder
                 $storeFolder = "images/employees/" . date("Y-m-d") . "/";
@@ -84,7 +87,9 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        // dd($id);
+        $getEmployee = Employee::where('employee_id',$id)->first();
+        return view("backend.pages.update-employee",compact("getEmployee"));
     }
 
     /**
@@ -107,7 +112,67 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        //
+        // dd(request()->all());
+        $credentials = $request->validate([
+            'name' => ['required'],
+            'email' => ['required','unique:employees,email,'.request()->id],
+            'basic_salary' => ['required'],
+            'gross_salary' => ['required'],
+            'net_salary' => ['required'],
+        ]);
+        $getEmployee = Employee::find(request()->id);
+        $input = $request->except(['employee_image']);
+        $updateEmployee = $getEmployee->update($input);
+        if (request()->hasFile('employee_image')) {
+            if ($getEmployee->employee_image != '' || $getEmployee->employee_image != null) {
+                $imageLocation = str_replace(url('') . "/", "", $getEmployee->employee_image);
+                if (File::exists($imageLocation)) {
+                    File::delete($imageLocation);
+                }
+                //* set file store folder
+                $storeFolder = "images/employees/" . date("Y-m-d") . "/";
+                //* get original file name
+                $image_fileName = request()->file('employee_image')->getClientOriginalName();
+                $image_fileExtension = request()->file('employee_image')->getClientOriginalExtension();
+                //* remove file extension
+                $image_fileName = strtok($image_fileName, ".");
+                //* remove blank spaces
+                $imageFinalName = str_replace(' ', '', $image_fileName);
+                $image_UniqueName = $imageFinalName . "_" . time() . "." . $image_fileExtension;
+                //? Full path with file name
+                $image_fullPath = url('') . "/" . $storeFolder . $image_UniqueName;
+                $basic_fullPath = $storeFolder . $image_UniqueName;
+                //! Save file to server folder
+                request()->file('employee_image')->move($storeFolder, $image_UniqueName);
+                $getEmployee->update([
+                    'employee_image' => $image_fullPath,
+                ]);
+                // $image = Image::make($basic_fullPath)->fit(300, 300);
+                // $image->save();
+            } else {
+                //* set file store folder
+                $storeFolder = "images/employees/" . date("Y-m-d") . "/";
+                //* get original file name
+                $image_fileName = request()->file('employee_image')->getClientOriginalName();
+                $image_fileExtension = request()->file('employee_image')->getClientOriginalExtension();
+                //* remove file extension
+                $image_fileName = strtok($image_fileName, ".");
+                //* remove blank spaces
+                $imageFinalName = str_replace(' ', '', $image_fileName);
+                $image_UniqueName = $imageFinalName . "_" . time() . "." . $image_fileExtension;
+                //? Full path with file name
+                $image_fullPath = url('') . "/" . $storeFolder . $image_UniqueName;
+                $basic_fullPath = $storeFolder . $image_UniqueName;
+                //! Save file to server folder
+                request()->file('employee_image')->move($storeFolder, $image_UniqueName);
+                $getEmployee->update([
+                    'employee_image' => $image_fullPath,
+                ]);
+                // $image = Image::make($basic_fullPath)->fit(300, 300);
+                // $image->save();
+            }
+        }
+        return redirect()->route('admin.employee-list')->with('success', 'Employee updated successfully done');
     }
 
     /**

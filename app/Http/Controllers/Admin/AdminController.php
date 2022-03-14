@@ -98,8 +98,7 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        Auth::logout();
-        return redirect()->route('admin.login');
+        //
     }
     public function logout()
     {

@@ -72,6 +72,7 @@
                                                 <th scope="col">Designation</th>
                                                 <th scope="col">Job_Type</th>
                                                 <th scope="col">Basic</th>
+                                                <th scope="col">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -90,22 +91,27 @@
                                                             <div class="flex-shrink-0">
                                                                 <img src="{{$employee->employee_image}}" alt="" class="avatar-xs rounded-circle" />
                                                             </div>
-                                                        @endif
-                                                        <div class="flex-grow-1">
-                                                            {{$employee->name}}
-                                                        </div>
+                                                            @endif
+                                                            <div class="flex-grow-1">
+                                                                {{$employee->name}}
+                                                            </div>
                                                     </div>
                                                 </td>
                                                 <td>{{$employee->school}}</td>
                                                 <td>{{$employee->designation}}</td>
                                                 <td class="text-success"><i class="ri-checkbox-circle-line fs-17 align-middle"></i> {{$employee->job_type}}</td>
                                                 <td>{{$employee->basic_salary}}</td>
+                                                <td>
+                                                    <a href="{{route("admin.show-employee",$employee->employee_id)}}">
+                                                        <i class="mdi mdi-square-edit-outline"></i>
+                                                    </a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                         <tfoot class="table-light">
                                             <tr>
-                                                <td colspan="6"></td>
+                                                <td colspan="7"></td>
                                                 <td>
                                                     {!! $getEmployee->links() !!}
                                                 </td>
@@ -161,4 +167,5 @@
 <title>Employee List | Bangladesh Open University</title>
 @endsection
 @section('scripts')
+    
 @endsection

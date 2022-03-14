@@ -42,6 +42,11 @@
                         <i class="mdi mdi-account-group"></i> <span data-key="t-employees">Employees</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link menu-link active" href="{{route('admin.employee-list')}}">
+                        <i class="mdi mdi-file-document-multiple-outline"></i> <span data-key="t-reports">Reports</span>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Dashboards</span>
