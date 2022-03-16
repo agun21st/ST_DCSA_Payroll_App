@@ -16,7 +16,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $getEmployee = Employee::latest()->paginate(5);
+        $getEmployee = Employee::with('salary')->latest()->paginate(5);
         return view('backend.pages.employees', compact('getEmployee'));
     }
 

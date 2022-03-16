@@ -56,7 +56,7 @@
                                 <div class="row g-4">
                                     <div class="col-sm-auto">
                                         <div>
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployee"><i
+                                            <button type="button" class="btn btn-primary bg-gradient waves-effect waves-light" data-bs-toggle="modal" data-bs-target="#addEmployee"><i
                                                     class="ri-add-line align-bottom me-1"></i> Add Employee</button>
                                         </div>
                                     </div>
@@ -95,6 +95,10 @@
                                         <tbody>
                                             @foreach ($getEmployee as $employee)
                                             <tr>
+                                                {{-- <td>{{count($employee->salary)}}</td> --}}
+                                                {{-- <td>{{isset($employee->salary)}}</td> --}}
+                                            </tr>
+                                            <tr>
                                                 <td>
                                                     <a href="{{route("admin.show-employee",$employee->employee_code)}}" class="fw-semibold" data-bs-toggle="tooltip" data-bs-placement="top" title="Show details">{{$employee->employee_code}}</a>
                                                 </td>
@@ -119,19 +123,25 @@
                                                 <td>{{$employee->qualification}}</td>
                                                 <td>{{$employee->joining_date}}</td>
                                                 <td>
-                                                    <a href="{{route("admin.show-employee",$employee->employee_code)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Employee">
+                                                    <a href="{{route("admin.show-employee",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Employee">
                                                         <i class="mdi mdi-square-edit-outline"></i>
                                                     </a>
-                                                    <a href="{{route("admin.create-salary",$employee->employee_code)}}" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Salary">
-                                                        <i class="mdi mdi-account-cash-outline"></i>
-                                                    </a>
+                                                    @if (count($employee->salary))
+                                                        <a href="{{route("admin.edit-salary",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Salary">
+                                                            <i class="mdi mdi-account-cash-outline"></i>
+                                                        </a>
+                                                    @else
+                                                        <a href="{{route("admin.create-salary",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Salary">
+                                                            <i class="mdi mdi-account-cash-outline"></i>
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                             @endforeach
                                         </tbody>
                                         <tfoot class="table-light">
                                             <tr>
-                                                <td colspan="7"></td>
+                                                <td colspan="10"></td>
                                                 <td>
                                                     {!! $getEmployee->links() !!}
                                                 </td>
@@ -344,67 +354,67 @@
             $("#create-employee-button").attr("disabled", true);
             $("#create-employee-button-spinner").addClass("btn-spinner");
         });
-        $(document).on("click", "#gross_salary-input", function() {
-            let gross_salary = 0;
-            let net_salary = 0;
-            let basic   = document.getElementById("basic-salary-input").value;
-            let house   = document.getElementById("house-rent-input").value;
-            let medical = document.getElementById("medical-input").value;
-            let conveyance = document.getElementById("conveyance-input").value;
-            let spacial = document.getElementById("special_bonus-input").value;
-            gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-            document.getElementById("gross_salary-input").value = parseInt(gross_salary);
+        // $(document).on("click", "#gross_salary-input", function() {
+        //     let gross_salary = 0;
+        //     let net_salary = 0;
+        //     let basic   = document.getElementById("basic-salary-input").value;
+        //     let house   = document.getElementById("house-rent-input").value;
+        //     let medical = document.getElementById("medical-input").value;
+        //     let conveyance = document.getElementById("conveyance-input").value;
+        //     let spacial = document.getElementById("special_bonus-input").value;
+        //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+        //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-            let provident = document.getElementById("provident-fund-input").value;
-            let gas = document.getElementById("gas-input").value;
-            let electricity = document.getElementById("electricity-input").value;
-            let water = document.getElementById("water-input").value;
-            let insurance = document.getElementById("insurance-input").value;
-            let welfare = document.getElementById("welfare-input").value;
-            net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-            document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-        });
-        $(document).on("click", "#net_salary-input", function() {
-            let gross_salary = 0;
-            let net_salary = 0;
-            let basic   = document.getElementById("basic-salary-input").value;
-            let house   = document.getElementById("house-rent-input").value;
-            let medical = document.getElementById("medical-input").value;
-            let conveyance = document.getElementById("conveyance-input").value;
-            let spacial = document.getElementById("special_bonus-input").value;
-            gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-            document.getElementById("gross_salary-input").value = parseInt(gross_salary);
+        //     let provident = document.getElementById("provident-fund-input").value;
+        //     let gas = document.getElementById("gas-input").value;
+        //     let electricity = document.getElementById("electricity-input").value;
+        //     let water = document.getElementById("water-input").value;
+        //     let insurance = document.getElementById("insurance-input").value;
+        //     let welfare = document.getElementById("welfare-input").value;
+        //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
+        //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+        // });
+        // $(document).on("click", "#net_salary-input", function() {
+        //     let gross_salary = 0;
+        //     let net_salary = 0;
+        //     let basic   = document.getElementById("basic-salary-input").value;
+        //     let house   = document.getElementById("house-rent-input").value;
+        //     let medical = document.getElementById("medical-input").value;
+        //     let conveyance = document.getElementById("conveyance-input").value;
+        //     let spacial = document.getElementById("special_bonus-input").value;
+        //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+        //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-            let provident = document.getElementById("provident-fund-input").value;
-            let gas = document.getElementById("gas-input").value;
-            let electricity = document.getElementById("electricity-input").value;
-            let water = document.getElementById("water-input").value;
-            let insurance = document.getElementById("insurance-input").value;
-            let welfare = document.getElementById("welfare-input").value;
-            net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-            document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-        });
+        //     let provident = document.getElementById("provident-fund-input").value;
+        //     let gas = document.getElementById("gas-input").value;
+        //     let electricity = document.getElementById("electricity-input").value;
+        //     let water = document.getElementById("water-input").value;
+        //     let insurance = document.getElementById("insurance-input").value;
+        //     let welfare = document.getElementById("welfare-input").value;
+        //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
+        //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+        // });
     });
-    function myAutoFill(){
-        let gross_salary = 0;
-        let net_salary = 0;
-        let basic   = document.getElementById("basic-salary-input").value;
-        let house   = document.getElementById("house-rent-input").value;
-        let medical = document.getElementById("medical-input").value;
-        let conveyance = document.getElementById("conveyance-input").value;
-        let spacial = document.getElementById("special_bonus-input").value;
-        gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-        document.getElementById("gross_salary-input").value = parseInt(gross_salary);
+    // function myAutoFill(){
+    //     let gross_salary = 0;
+    //     let net_salary = 0;
+    //     let basic   = document.getElementById("basic-salary-input").value;
+    //     let house   = document.getElementById("house-rent-input").value;
+    //     let medical = document.getElementById("medical-input").value;
+    //     let conveyance = document.getElementById("conveyance-input").value;
+    //     let spacial = document.getElementById("special_bonus-input").value;
+    //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+    //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-        let provident = document.getElementById("provident-fund-input").value;
-        let gas = document.getElementById("gas-input").value;
-        let electricity = document.getElementById("electricity-input").value;
-        let water = document.getElementById("water-input").value;
-        let insurance = document.getElementById("insurance-input").value;
-        let welfare = document.getElementById("welfare-input").value;
-        net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-        document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-    }
-    myAutoFill();
+    //     let provident = document.getElementById("provident-fund-input").value;
+    //     let gas = document.getElementById("gas-input").value;
+    //     let electricity = document.getElementById("electricity-input").value;
+    //     let water = document.getElementById("water-input").value;
+    //     let insurance = document.getElementById("insurance-input").value;
+    //     let welfare = document.getElementById("welfare-input").value;
+    //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
+    //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+    // }
+    // myAutoFill();
 </script>
 @endsection

@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="mb-3">
-                        <a href="{{route('admin.employee-list')}}" class="btn btn-primary"><i
+                        <a href="{{route('admin.employee-list')}}" class="btn btn-primary bg-gradient waves-effect waves-light"><i
                                 class="mdi mdi-keyboard-backspace align-bottom me-1"></i> All Employee</a>
                     </div>
                 </div>

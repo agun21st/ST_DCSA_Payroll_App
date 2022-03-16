@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Add Salary</h4>
+                        <h4 class="mb-sm-0">Edit Salary</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Employees</a></li>
-                                <li class="breadcrumb-item active">Add Salary</li>
+                                <li class="breadcrumb-item active">Edit Salary</li>
                             </ol>
                         </div>
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <form action="{{route('admin.add-salary')}}" method="post" id="add-salary-form" enctype="multipart/form-data">
+            <form action="{{route('admin.update-salary')}}" method="post" id="update-salary-form" enctype="multipart/form-data">
                 <div>
                     @if ($errors->any())
                         @foreach ($errors->all() as $error)
@@ -57,6 +57,7 @@
                         </div>
                     @endif
                 @csrf
+                @method('patch')
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
@@ -70,20 +71,20 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <div class="d-flex gap-2 align-items-center">
-                                                        @if (isset($getEmployee->employee_image))
+                                                        @if (isset($getSalary->employee->employee_image))
                                                             <div class="flex-shrink-0">
-                                                                <img src="{{$getEmployee->employee_image}}" alt="" class="avatar-xs rounded-circle" />
+                                                                <img src="{{$getSalary->employee->employee_image}}" alt="" class="avatar-xs rounded-circle" />
                                                             </div>
                                                             @endif
                                                             <div class="flex-grow-1">
-                                                                {{$getEmployee->name}}
+                                                                {{$getSalary->employee->name}}
                                                             </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
-                                                    ID: {{$getEmployee->employee_code}}
+                                                    ID: {{$getSalary->employee->employee_code}}
                                                 </div>
                                             </div>
                                         </div>
@@ -100,9 +101,10 @@
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-6">
+                                                {{-- {{$getSalary}} --}}
                                                 <div class="mb-3">
                                                     <label class="form-label" for="basic-salary-input">Basic Salary* (৳)</label>
-                                                    <input onclick="this.select();" type="number" name="basic" class="form-control" id="basic-salary-input" placeholder="Empoyee Basic Salary" value="{{old('basic')?old('basic'):0}}" oninput="myAutoFill()" required>
+                                                    <input onclick="this.select();" type="number" name="basic" class="form-control" id="basic-salary-input" placeholder="Empoyee Basic Salary" value="{{$getSalary->basic}}" oninput="myAutoFill()" required>
                                                     <small class="text-danger">@error('basic')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -111,7 +113,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="house-rent-input">House Rent (10%)</label>
-                                                    <input onclick="this.select();" type="number" name="house_rent" class="form-control" id="house-rent-input" placeholder="House Rent" value="{{old('house_rent')}}"  oninput="myAutoFill()"  required readonly>
+                                                    <input onclick="this.select();" type="number" name="house_rent" class="form-control" id="house-rent-input" placeholder="House Rent" value=""  oninput="myAutoFill()"  required readonly>
                                                     <small class="text-danger">@error('house_rent')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -120,7 +122,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="medical-input">Medical Allowance (3%)</label>
-                                                    <input onclick="this.select();" type="number" name="medical" class="form-control" id="medical-input" placeholder="Medical" value="{{old('medical')}}"  oninput="myAutoFill()" required readonly>
+                                                    <input onclick="this.select();" type="number" name="medical" class="form-control" id="medical-input" placeholder="Medical" value=""  oninput="myAutoFill()" required readonly>
                                                     <small class="text-danger">@error('medical')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -129,7 +131,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="mobile-input">Mobile (2%)</label>
-                                                    <input onclick="this.select();" type="number" name="mobile" class="form-control" id="mobile-input" placeholder="mobile" value="{{old('mobile')}}"  oninput="myAutoFill()" required readonly>
+                                                    <input onclick="this.select();" type="number" name="mobile" class="form-control" id="mobile-input" placeholder="mobile" value=""  oninput="myAutoFill()" required readonly>
                                                     <small class="text-danger">@error('mobile')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -150,7 +152,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="provident-fund-input">Provident Fund (5%)</label>
-                                                    <input onclick="this.select();" type="number" name="provident_fund" class="form-control" id="provident-fund-input" placeholder="Provident Fund" value="{{$getEmployee->provident_fund}}"  oninput="myAutoFill()"  required>
+                                                    <input onclick="this.select();" type="number" name="provident_fund" class="form-control" id="provident-fund-input" placeholder="Provident Fund" value=""  oninput="myAutoFill()"  required>
                                                     <small class="text-danger">@error('provident_fund')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -159,7 +161,7 @@
                                             <div class="col-lg-6">
                                                 <div class="mb-3">
                                                     <label class="form-label" for="welfare-input">Welfare (2%)</label>
-                                                    <input onclick="this.select();" type="number" name="welfare" class="form-control" id="welfare-input" placeholder="Welfare" value="{{$getEmployee->welfare}}"  oninput="myAutoFill()"  required>
+                                                    <input onclick="this.select();" type="number" name="welfare" class="form-control" id="welfare-input" placeholder="Welfare" value=""  oninput="myAutoFill()"  required>
                                                     <small class="text-danger">@error('welfare')
                                                         {{ $message }}
                                                         @enderror</small>
@@ -189,9 +191,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <input type="hidden" name="entry_by" value="{{Auth::user()->id}}" required>
-                                    <input type="hidden" name="employee_code" value="{{$getEmployee->employee_code}}" required>
-                                    <input type="hidden" name="id" value="{{$getEmployee->id}}" required>
-                                    <button type="submit" class="btn btn-primary bg-gradient waves-effect waves-light w-sm d-flex justify-content-center align-items-center" id="add-salary-button"><div class="" id="add-salary-button-spinner" style="margin-right: 5px;"></div>Submit</button>
+                                    <input type="hidden" name="employee_code" value="{{$getSalary->employee_code}}" required>
+                                    <input type="hidden" name="id" value="{{$getSalary->id}}" required>
+                                    <button type="submit" class="btn btn-primary bg-gradient waves-effect waves-light w-sm d-flex justify-content-center align-items-center" id="update-salary-button"><div class="" id="update-salary-button-spinner" style="margin-right: 5px;"></div>Update</button>
                                 </div>
                             </div>
                         </div>
@@ -215,9 +217,9 @@
     <script>
         // Admin Login Form
         $(function(){
-            $(document).on("submit", "#add-salary-form", function() {
-                $("#add-salary-button").attr("disabled", true);
-                $("#add-salary-button-spinner").addClass("btn-spinner");
+            $(document).on("submit", "#update-salary-form", function() {
+                $("#update-salary-button").attr("disabled", true);
+                $("#update-salary-button-spinner").addClass("btn-spinner");
             });
             // $(document).on("click", "#gross_salary-input", function() {
             //     let gross_salary = 0;

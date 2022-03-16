@@ -362,7 +362,7 @@
                         </div>
                         <div class="mb-3">
                             <input type="hidden" name="entry_by" value="{{Auth::user()->id}}" required>
-                            <button type="submit" class="btn btn-primary w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Submit</button>
+                            <button type="submit" class="btn btn-primary bg-gradient waves-effect waves-light w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Submit</button>
                         </div>
                         <!-- end card -->
                     </div>

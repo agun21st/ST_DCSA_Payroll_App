@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Salary;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
@@ -26,4 +27,9 @@ class Employee extends Model
         'entry_by',
         'status'
     ];
+
+    public function salary()
+    {
+        return $this->hasMany(Salary::class, 'employee_id');
+    }
 }

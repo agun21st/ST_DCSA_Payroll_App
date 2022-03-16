@@ -61,6 +61,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/employee-list', [EmployeeController::class, 'index'])->name('employee-list');
         Route::get('/show-employee/{id}', [EmployeeController::class, 'show'])->name('show-employee');
         Route::get('/create-salary/{id}', [SalaryController::class, 'show'])->name('create-salary');
+        Route::post('/add-salary', [SalaryController::class, 'store'])->name('add-salary');
+        Route::get('/edit-salary/{id}', [SalaryController::class, 'editSalary'])->name('edit-salary');
+        Route::patch('/update-salary', [SalaryController::class, 'update'])->name('update-salary');
         Route::get('/create-employee', [EmployeeController::class, 'create'])->name('create-employee');
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');
         Route::patch('/update-employee', [EmployeeController::class, 'update'])->name('update-employee');
