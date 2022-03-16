@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ApartmentController;
@@ -59,9 +60,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/employee-list', [EmployeeController::class, 'index'])->name('employee-list');
         Route::get('/show-employee/{id}', [EmployeeController::class, 'show'])->name('show-employee');
+        Route::get('/create-salary/{id}', [SalaryController::class, 'show'])->name('create-salary');
         Route::get('/create-employee', [EmployeeController::class, 'create'])->name('create-employee');
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');
-        Route::post('/update-employee', [EmployeeController::class, 'update'])->name('update-employee');
+        Route::patch('/update-employee', [EmployeeController::class, 'update'])->name('update-employee');
 
         // Logout Route
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');

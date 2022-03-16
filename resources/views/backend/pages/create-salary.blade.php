@@ -7,12 +7,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Edit Employee</h4>
+                        <h4 class="mb-sm-0">Add Salary</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Employees</a></li>
-                                <li class="breadcrumb-item active">Edit Employee</li>
+                                <li class="breadcrumb-item active">Add Salary</li>
                             </ol>
                         </div>
 
@@ -41,9 +41,113 @@
                 @method('patch')
                 <div class="row">
                     <div class="col-12">
-                        <div class="card">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Salary Details</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="basic-salary-input">Basic Salary* (৳)</label>
+                                                    <input onclick="this.select();" type="number" name="basic" class="form-control" id="basic-salary-input" placeholder="Empoyee Basic Salary" value="{{old('basic')?old('basic'):0}}" oninput="myAutoFill()" required>
+                                                    <small class="text-danger">@error('basic')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="house-rent-input">House Rent (10%)</label>
+                                                    <input onclick="this.select();" type="number" name="house_rent" class="form-control" id="house-rent-input" placeholder="House Rent" value="{{old('house_rent')}}"  oninput="myAutoFill()"  required readonly>
+                                                    <small class="text-danger">@error('house_rent')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="medical-input">Medical Allowance (3%)</label>
+                                                    <input onclick="this.select();" type="number" name="medical" class="form-control" id="medical-input" placeholder="Medical" value="{{old('medical')}}"  oninput="myAutoFill()" required readonly>
+                                                    <small class="text-danger">@error('medical')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="mobile-input">Mobile (2%)</label>
+                                                    <input onclick="this.select();" type="number" name="mobile" class="form-control" id="mobile-input" placeholder="mobile" value="{{old('mobile')}}"  oninput="myAutoFill()" required readonly>
+                                                    <small class="text-danger">@error('mobile')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h5 class="card-title mb-0">Deductions</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="provident-fund-input">Provident Fund</label>
+                                                    <input onclick="this.select();" type="number" name="provident_fund" class="form-control" id="provident-fund-input" placeholder="Provident Fund" value="{{$getEmployee->provident_fund}}"  oninput="myAutoFill()"  required>
+                                                    <small class="text-danger">@error('provident_fund')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="welfare-input">Welfare</label>
+                                                    <input onclick="this.select();" type="number" name="welfare" class="form-control" id="welfare-input" placeholder="Welfare" value="{{$getEmployee->welfare}}"  oninput="myAutoFill()"  required>
+                                                    <small class="text-danger">@error('welfare')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="gross_salary-input">Gross Salary</label>
+                                                    <input type="number" name="gross_salary" class="form-control" id="gross_salary-input" placeholder="Click here..." readonly required>
+                                                    <small class="text-danger">@error('gross_salary')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label class="form-label" for="net_salary-input">Net Salary</label>
+                                                    <input type="number" name="net_salary" class="form-control" id="net_salary-input" placeholder="Click here..." readonly required>
+                                                    <small class="text-danger">@error('net_salary')
+                                                        {{ $message }}
+                                                        @enderror</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end card body -->
+                                </div>
+                                <div class="mb-3">
+                                    <input type="hidden" name="entry_by" value="{{Auth::user()->id}}" required>
+                                    <input type="hidden" name="id" value="{{$getEmployee->id}}" required>
+                                    <button type="submit" class="btn btn-primary w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Update</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                        {{-- <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title mb-0">Employee Details</h5>
+                                <h5 class="card-title mb-0">Salary Details</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -193,7 +297,7 @@
                                     <button type="submit" class="btn btn-primary bg-gradient waves-effect waves-light w-sm d-flex justify-content-center align-items-center" id="create-employee-button"><div class="" id="create-employee-button-spinner" style="margin-right: 5px;"></div>Update</button>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <!-- end col -->
 
@@ -401,67 +505,77 @@
                 $("#create-employee-button").attr("disabled", true);
                 $("#create-employee-button-spinner").addClass("btn-spinner");
             });
-            $(document).on("click", "#gross_salary-input", function() {
-                let gross_salary = 0;
-                let net_salary = 0;
-                let basic   = document.getElementById("basic-salary-input").value;
-                let house   = document.getElementById("house-rent-input").value;
-                let medical = document.getElementById("medical-input").value;
-                let conveyance = document.getElementById("conveyance-input").value;
-                let spacial = document.getElementById("special_bonus-input").value;
-                gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-                document.getElementById("gross_salary-input").value = parseInt(gross_salary);
+            // $(document).on("click", "#gross_salary-input", function() {
+            //     let gross_salary = 0;
+            //     let net_salary = 0;
+            //     let basic   = document.getElementById("basic-salary-input").value;
+            //     let house   = document.getElementById("house-rent-input").value;
+            //     let medical = document.getElementById("medical-input").value;
+            //     let conveyance = document.getElementById("conveyance-input").value;
+            //     let spacial = document.getElementById("special_bonus-input").value;
+            //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+            //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-                let provident = document.getElementById("provident-fund-input").value;
-                let gas = document.getElementById("gas-input").value;
-                let electricity = document.getElementById("electricity-input").value;
-                let water = document.getElementById("water-input").value;
-                let insurance = document.getElementById("insurance-input").value;
-                let welfare = document.getElementById("welfare-input").value;
-                net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-                document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-            });
-            $(document).on("click", "#net_salary-input", function() {
-                let gross_salary = 0;
-                let net_salary = 0;
-                let basic   = document.getElementById("basic-salary-input").value;
-                let house   = document.getElementById("house-rent-input").value;
-                let medical = document.getElementById("medical-input").value;
-                let conveyance = document.getElementById("conveyance-input").value;
-                let spacial = document.getElementById("special_bonus-input").value;
-                gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-                document.getElementById("gross_salary-input").value = parseInt(gross_salary);
+            //     let provident = document.getElementById("provident-fund-input").value;
+            //     let gas = document.getElementById("gas-input").value;
+            //     let electricity = document.getElementById("electricity-input").value;
+            //     let water = document.getElementById("water-input").value;
+            //     let insurance = document.getElementById("insurance-input").value;
+            //     let welfare = document.getElementById("welfare-input").value;
+            //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
+            //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+            // });
+            // $(document).on("click", "#net_salary-input", function() {
+            //     let gross_salary = 0;
+            //     let net_salary = 0;
+            //     let basic   = document.getElementById("basic-salary-input").value;
+            //     let house   = document.getElementById("house-rent-input").value;
+            //     let medical = document.getElementById("medical-input").value;
+            //     let conveyance = document.getElementById("conveyance-input").value;
+            //     let spacial = document.getElementById("special_bonus-input").value;
+            //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+            //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-                let provident = document.getElementById("provident-fund-input").value;
-                let gas = document.getElementById("gas-input").value;
-                let electricity = document.getElementById("electricity-input").value;
-                let water = document.getElementById("water-input").value;
-                let insurance = document.getElementById("insurance-input").value;
-                let welfare = document.getElementById("welfare-input").value;
-                net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-                document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-            });
+            //     let provident = document.getElementById("provident-fund-input").value;
+            //     let gas = document.getElementById("gas-input").value;
+            //     let electricity = document.getElementById("electricity-input").value;
+            //     let water = document.getElementById("water-input").value;
+            //     let insurance = document.getElementById("insurance-input").value;
+            //     let welfare = document.getElementById("welfare-input").value;
+            //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
+            //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+            // });
         });
         function myAutoFill(){
-            console.log("I am fired")
-            let gross_salary = 0;
-            let net_salary = 0;
-            let basic   = document.getElementById("basic-salary-input").value;
-            let house   = document.getElementById("house-rent-input").value;
-            let medical = document.getElementById("medical-input").value;
-            let conveyance = document.getElementById("conveyance-input").value;
-            let spacial = document.getElementById("special_bonus-input").value;
-            gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
+            let basicSalary = parseInt(document.getElementById("basic-salary-input").value)
+            console.log(basicSalary)
+            let house_rent_amount = (basicSalary * 10)/100
+            let medical_amount = (basicSalary * 3)/100
+            let mobile_amount = (basicSalary * 2)/100
+            let provident_amount = (basicSalary * 5)/100
+            let welfare_amount = (basicSalary * 2)/100
+            console.log(house_rent_amount)
+            document.getElementById("house-rent-input").value = house_rent_amount;
+            document.getElementById("medical-input").value = medical_amount;
+            document.getElementById("mobile-input").value = mobile_amount;
+            gross_salary = parseInt(basicSalary)+parseInt(house_rent_amount)+parseInt(medical_amount)+parseInt(mobile_amount);
             document.getElementById("gross_salary-input").value = parseInt(gross_salary);
 
-            let provident = document.getElementById("provident-fund-input").value;
-            let gas = document.getElementById("gas-input").value;
-            let electricity = document.getElementById("electricity-input").value;
-            let water = document.getElementById("water-input").value;
-            let insurance = document.getElementById("insurance-input").value;
-            let welfare = document.getElementById("welfare-input").value;
-            net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-            document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
+            document.getElementById("provident-fund-input").value = provident_amount;
+            document.getElementById("welfare-input").value = welfare_amount;
+            deduction = parseInt(provident_amount)+parseInt(welfare_amount);
+            document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(deduction);
+
+            // let gross_salary = 0;
+            // let net_salary = 0;
+            // let basic   = document.getElementById("basic-salary-input").value;
+            // let conveyance = document.getElementById("conveyance-input").value;
+            // let spacial = document.getElementById("special_bonus-input").value;
+
+            // let gas = document.getElementById("gas-input").value;
+            // let electricity = document.getElementById("electricity-input").value;
+            // let water = document.getElementById("water-input").value;
+            // let insurance = document.getElementById("insurance-input").value;
         }
         myAutoFill();
     </script>

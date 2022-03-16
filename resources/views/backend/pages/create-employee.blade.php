@@ -50,8 +50,8 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label class="form-label" for="employee-id-input">Employee ID*</label>
-                                            <input onclick="this.select();" type="text" name="employee_id" class="form-control" id="employee-id-input" placeholder="Enter employee id" value="ID-{{rand(10000, 99999)}}" required>
-                                            <small class="text-danger">@error('employee_id')
+                                            <input onclick="this.select();" type="text" name="employee_code" class="form-control" id="employee-id-input" placeholder="Enter employee id" value="ID-{{rand(10000, 99999)}}" required>
+                                            <small class="text-danger">@error('employee_code')
                                                 {{ $message }}
                                             @enderror</small>
                                         </div>
