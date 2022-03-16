@@ -15,25 +15,18 @@ class CreateSalariesTable extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->string("employe_id");
-            $table->string("job_type")->default("Full time");
-            $table->integer("basic_salary")->default(0);
-            $table->integer("increment");
-            $table->integer("working_hour");
-            $table->integer("hourly_rate");
+            $table->foreignId('employee_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string("employee_code")->unique();
+            $table->integer("basic")->default(0);
             $table->integer("house_rent")->default(0);
             $table->integer("medical")->default(0);
-            $table->integer("conveyance")->default(0);
-            $table->integer("special_bonus")->default(0);
-            $table->integer("provident_fund")->default(0);
-            $table->integer("gas")->default(0);
-            $table->integer("electricity")->default(0);
-            $table->integer("water")->default(0);
-            $table->integer("insurance")->default(0);
-            $table->integer("welfare")->default(0);
+            $table->integer("mobile")->default(0);
             $table->integer("gross_salary")->default(0);
+            $table->integer("welfare")->default(0);
+            $table->integer("provident_fund")->default(0);
             $table->integer("net_salary")->default(0);
             $table->integer("entry_by");
+            $table->tinyInteger('status')->unsigned()->default(1);
             $table->timestamps();
         });
     }

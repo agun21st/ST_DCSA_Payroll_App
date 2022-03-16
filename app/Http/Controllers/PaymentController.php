@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Salary;
+use App\Models\Payment;
 use Illuminate\Http\Request;
-use App\Models\Admin\Employee;
 
-class SalaryController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,23 +41,21 @@ class SalaryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Salary  $salary
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Payment $payment)
     {
-        // dd($id);
-        $getEmployee = Employee::where('employee_code',$id)->first();
-        return view("backend.pages.create-salary",compact("getEmployee"));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Salary  $salary
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Salary $salary)
+    public function edit(Payment $payment)
     {
         //
     }
@@ -67,10 +64,10 @@ class SalaryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Salary  $salary
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Salary $salary)
+    public function update(Request $request, Payment $payment)
     {
         //
     }
@@ -78,10 +75,10 @@ class SalaryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Salary  $salary
+     * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Salary $salary)
+    public function destroy(Payment $payment)
     {
         //
     }

@@ -43,14 +43,14 @@ class EmployeeController extends Controller
         $credentials = $request->validate([
             'name' => ['required'],
             'email' => ['required','unique:employees,email'],
-            'basic_salary' => ['required'],
-            'gross_salary' => ['required'],
-            'net_salary' => ['required'],
+            'employee_code' => ['required'],
+            'joining_date' => ['required'],
+            'dob' => ['required'],
         ]);
 
         DB::transaction(function () {
 
-            $createOffer = Employee::create(request()->except(['employee_image']));
+            $createEmployee = Employee::create(request()->except(['employee_image']));
 
             if (request()->hasFile('employee_image')) {
                 //* set file store folder
@@ -68,7 +68,7 @@ class EmployeeController extends Controller
                 $basic_fullPath = $storeFolder . $image_UniqueName;
                 //! Save file to server folder
                 request()->file('employee_image')->move($storeFolder, $image_UniqueName);
-                $createOffer->update([
+                $createEmployee->update([
                     'employee_image' => $image_fullPath,
                 ]);
                 // $image = Image::make($basic_fullPath)->fit(300, 300);
@@ -88,7 +88,7 @@ class EmployeeController extends Controller
     public function show($id)
     {
         // dd($id);
-        $getEmployee = Employee::where('employee_id',$id)->first();
+        $getEmployee = Employee::where('employee_code',$id)->first();
         return view("backend.pages.update-employee",compact("getEmployee"));
     }
 
@@ -110,15 +110,16 @@ class EmployeeController extends Controller
      * @param  \App\Models\Admin\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request)
     {
-        // dd(request()->all());
+        // dd($request->all());
+
         $credentials = $request->validate([
             'name' => ['required'],
             'email' => ['required','unique:employees,email,'.request()->id],
-            'basic_salary' => ['required'],
-            'gross_salary' => ['required'],
-            'net_salary' => ['required'],
+            'employee_code' => ['required'],
+            'joining_date' => ['required'],
+            'dob' => ['required'],
         ]);
         $getEmployee = Employee::find(request()->id);
         $input = $request->except(['employee_image']);
