@@ -29,7 +29,7 @@
                             <div class="col-12">
                                 <div class="d-flex align-items-lg-center flex-lg-row flex-column">
                                     <div class="flex-grow-1">
-                                        <h4 class="fs-16 mb-1">Good Morning, Anna!</h4>
+                                        <h4 class="fs-16 mb-1">Good Morning, {{Auth::user()->name}}!</h4>
                                         <p class="text-muted mb-0">Here's what's happening with your store today.</p>
                                     </div>
                                     <div class="mt-3 mt-lg-0">
@@ -68,7 +68,7 @@
                                     <div class="card-body">
                                         <div class="d-flex align-items-center">
                                             <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Earnings</p>
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">Total Employees</p>
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <h5 class="text-success fs-14 mb-0">
@@ -78,12 +78,17 @@
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4">$<span class="counter-value" data-target="559.25">0</span>k</h4>
-                                                <a href="" class="text-decoration-underline">View net earnings</a>
+                                                @if (isset($totalEmployee))
+                                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><i class="mdi mdi-account-group"></i> <span class="counter-value" data-target="{{$totalEmployee}}"></span></h4>
+                                                @else
+                                                    <h4 class="fs-22 fw-semibold ff-secondary mb-4"><i class="mdi mdi-account-group"></i> <span class="counter-value" data-target="0"></span></h4>
+                                                    
+                                                @endif
+                                                <a href="{{route('admin.employee-list')}}" class="text-decoration-underline">View all employees</a>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success rounded fs-3">
-                                                        <i class="bx bx-dollar-circle"></i>
+                                                        <i class="mdi mdi-account-group"></i>
                                                     </span>
                                             </div>
                                         </div>

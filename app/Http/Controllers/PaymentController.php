@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use App\Models\Admin\Employee;
 
 class PaymentController extends Controller
 {
@@ -35,7 +36,20 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $request->validate([
+            'payment_date' => ['required'],
+            'payment_month' => ['required'],
+            'payment_year' => ['required'],
+            'status' => ['required'],
+            'employee_id' => ['required'],
+            'salary_id' => ['required'],
+            'employee_code' => ['required'],
+        ]);
+
+        $storePayment = Payment::create($request->all());
+
+        return redirect()->route('admin.pay-salary',$request->employee_code)->with('success', 'Employee pay salary successfully done');
     }
 
     /**
@@ -44,9 +58,20 @@ class PaymentController extends Controller
      * @param  \App\Models\Payment  $payment
      * @return \Illuminate\Http\Response
      */
-    public function show(Payment $payment)
+    public function show($id)
     {
-        //
+        // dd($id);
+        $getEmployee = Employee::with('salary')->where('employee_code',$id)->first();
+        $getSalaryList = Payment::where('employee_code',$id)->latest()->paginate(5);
+        return view("backend.pages.pay-salary",compact(["getEmployee","getSalaryList"]));
+    }
+    public function paySlip($id)
+    {
+        // dd($id);
+        // $getEmployee = Employee::with('salary')->where('employee_code',$id)->first();
+        $getSalaryInfo = Payment::with(['employee','salary'])->where('id',$id)->first();
+
+        return view("backend.pages.pay-slip",compact(["getSalaryInfo"]));
     }
 
     /**

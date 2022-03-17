@@ -62,7 +62,7 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <a href="{{url('/')}}" class="d-inline-block auth-logo">
-                                            <img src="/assets/images/bou_logo.webp" alt="" height="80">
+                                            <img src="{{asset('/assets/images/bou_logo.webp')}}" alt="" height="80">
                                         </a>
                                         <h5 class="text-primary mt-4">Payroll Management System</h5>
                                     </div>
@@ -104,7 +104,7 @@
                                             </div>
 
                                             <div class="mt-4">
-                                                <button class="btn btn-success bg-gradient waves-effect waves-light w-100 d-flex justify-content-center align-items-center" type="submit" id="admin-login-button"><div class="" id="admin-login-button-spinner" style="margin-right: 5px;"></div>Sign In</button>
+                                                <button class="btn btn-primary bg-gradient waves-effect waves-light w-100 d-flex justify-content-center align-items-center" type="submit" id="admin-login-button"><div class="" id="admin-login-button-spinner" style="margin-right: 5px;"></div>Sign In</button>
                                             </div>
 
                                             <div class="mt-4 text-center">

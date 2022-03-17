@@ -68,7 +68,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="choices-school-input" class="form-label">School Name*</label>
-                                            <select class="form-select" name="school" id="choices-school-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="school" id="choices-school-input" data-choices data-choices-sorting-false required>
                                                 <option value="IST" {{$getEmployee->school==="IST"?"selected":""}}>IST</option>
                                                 <option value="Alhaz Mokbul Hossain University" {{$getEmployee->school==="Alhaz Mokbul Hossain University"?"selected":""}}>Alhaz Mokbul Hossain University</option>
                                             </select>
@@ -77,7 +77,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="choices-department-input" class="form-label">Department*</label>
-                                            <select class="form-select" name="department" id="choices-department-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="department" id="choices-department-input" data-choices data-choices-sorting-false required>
                                                 <option value="Computer Science & Engineering" {{$getEmployee->department==="Computer Science & Engineering"?"selected":""}}>Computer Science & Engineering</option>
                                                 <option value="Electronics & Communication Engineering" {{$getEmployee->department==="Electronics & Communication Engineering"?"selected":""}}>Electronics & Communication Engineering</option>
                                                 <option value="Business Administration" {{$getEmployee->department==="Business Administration"?"selected":""}}>Business Administration</option>
@@ -87,7 +87,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="designation-input" class="form-label">Designation*</label>
-                                            <select class="form-select" name="designation" id="designation-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="designation" id="designation-input" data-choices data-choices-sorting-false required>
                                                 <option value="Associate Professor" {{$getEmployee->designation==="Associate Professor"?"selected":""}}>Associate Professor</option>
                                                 <option value="Lecturer" {{$getEmployee->designation==="Lecturer"?"selected":""}}>Lecturer</option>
                                                 <option value="Faculty Member" {{$getEmployee->designation==="Faculty Member"?"selected":""}}>Faculty Member</option>
@@ -156,7 +156,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="educational-qualification-input" class="form-label">Educational Qualification*</label>
-                                            <select class="form-select" name="qualification" id="educational-qualification-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="qualification" id="educational-qualification-input" data-choices data-choices-sorting-false required>
                                                 <option value="MSc in CSE" {{$getEmployee->qualification==="MSc in CSE"?"selected":""}}>MSc in CSE</option>
                                                 <option value="BSc in CSE" {{$getEmployee->qualification==="BSc in CSE"?"selected":""}}>BSc in CSE</option>
                                                 <option value="BBA" {{$getEmployee->qualification==="BBA"?"selected":""}}>BBA</option>

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Salary;
+use App\Models\Admin\Employee;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Payment extends Model
 {
@@ -18,4 +20,13 @@ class Payment extends Model
         'payment_year',
         'status',
     ];
+
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class, 'employee_id');
+    }
+    public function salary()
+    {
+        return $this->belongsTo(Salary::class, 'salary_id');
+    }
 }

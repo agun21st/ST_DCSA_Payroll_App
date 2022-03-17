@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ApartmentController;
@@ -54,19 +55,25 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', function () {
             return view('backend.pages.dashboard');
         })->name('admin');
-        Route::get('/dashboard', function () {
-            return view('backend.pages.dashboard');
-        })->name('dashboard');
+        Route::get('/dashboard', [EmployeeController::class, 'dashboard'])->name('dashboard');
 
         Route::get('/employee-list', [EmployeeController::class, 'index'])->name('employee-list');
         Route::get('/show-employee/{id}', [EmployeeController::class, 'show'])->name('show-employee');
+
         Route::get('/create-salary/{id}', [SalaryController::class, 'show'])->name('create-salary');
         Route::post('/add-salary', [SalaryController::class, 'store'])->name('add-salary');
         Route::get('/edit-salary/{id}', [SalaryController::class, 'editSalary'])->name('edit-salary');
         Route::patch('/update-salary', [SalaryController::class, 'update'])->name('update-salary');
+
+        Route::get('/pay-salary/{id}', [PaymentController::class, 'show'])->name('pay-salary');
+        Route::post('/add-pay-salary', [PaymentController::class, 'store'])->name('add-pay-salary');
+        Route::get('/pay-slip/{id}', [PaymentController::class, 'paySlip'])->name('pay-slip');
+        
+
         Route::get('/create-employee', [EmployeeController::class, 'create'])->name('create-employee');
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');
         Route::patch('/update-employee', [EmployeeController::class, 'update'])->name('update-employee');
+        Route::post('/delete-employee/{id}', [EmployeeController::class, 'destroy'])->name('delete-employee');
 
         // Logout Route
         Route::post('/logout', [AdminController::class, 'logout'])->name('logout');

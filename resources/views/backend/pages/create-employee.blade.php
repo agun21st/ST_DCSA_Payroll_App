@@ -59,7 +59,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="choices-school-input" class="form-label">School Name*</label>
-                                            <select class="form-select" name="school" id="choices-school-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="school" id="choices-school-input" data-choices data-choices-sorting-false required>
                                                 <option value="IST" selected>IST</option>
                                                 <option value="DU">DU</option>
                                             </select>
@@ -68,7 +68,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="designation-input" class="form-label">Designation / Position*</label>
-                                            <select class="form-select" name="designation" id="designation-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="designation" id="designation-input" data-choices data-choices-sorting-false required>
                                                 <option value="Assistant Professor" selected>Assistant Professor</option>
                                                 <option value="Dean">Dean</option>
                                                 <option value="Teacher">Teacher</option>
@@ -131,7 +131,7 @@
                                     <div class="col-lg-6">
                                         <div class="mb-3">
                                             <label for="educational-qualification-input" class="form-label">Educational Qualification*</label>
-                                            <select class="form-select" name="qualification" id="educational-qualification-input" data-choices data-choices-search-false required>
+                                            <select class="form-control" name="qualification" id="educational-qualification-input" data-choices data-choices-sorting-false required>
                                                 <option value="MSc" selected>MSc</option>
                                                 <option value="BSc">BSc</option>
                                                 <option value="HSC">HSC</option>

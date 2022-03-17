@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{route('admin.dashboard')}}" class="logo logo-dark">
             <span class="logo-sm">
                     <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
                 </span>
@@ -12,7 +12,7 @@
                 </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="{{route('admin.dashboard')}}" class="logo logo-light">
             <span class="logo-sm">
                     <img src="/assets/images/bou_logo.webp" alt="" height="40" style="-webkit-filter: invert(1);filter: invert(1);">
                 </span>
@@ -60,7 +60,7 @@
                                 <a href="dashboard-crm.html" class="nav-link" data-key="t-crm"> CRM </a>
                             </li>
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
+                                <a href="{{route('admin.dashboard')}}" class="nav-link" data-key="t-ecommerce"> Ecommerce </a>
                             </li>
                             <li class="nav-item">
                                 <a href="dashboard-crypto.html" class="nav-link" data-key="t-crypto"> Crypto </a>

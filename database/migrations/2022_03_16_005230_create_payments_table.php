@@ -17,7 +17,7 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->foreignId('employee_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('salary_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->string("employee_code")->unique();
+            $table->string("employee_code")->nullable();
             $table->string("payment_date")->nullable();
             $table->string("payment_month")->nullable();
             $table->string("payment_year")->nullable();

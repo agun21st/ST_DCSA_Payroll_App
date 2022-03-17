@@ -89,15 +89,11 @@
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Education</th>
                                                 <th scope="col">Joining_Date</th>
-                                                <th scope="col">Actions</th>
+                                                <th scope="col" class="text-center" style="width: 15%">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @foreach ($getEmployee as $employee)
-                                            <tr>
-                                                {{-- <td>{{count($employee->salary)}}</td> --}}
-                                                {{-- <td>{{isset($employee->salary)}}</td> --}}
-                                            </tr>
                                             <tr>
                                                 <td>
                                                     <a href="{{route("admin.show-employee",$employee->employee_code)}}" class="fw-semibold" data-bs-toggle="tooltip" data-bs-placement="top" title="Show details">{{$employee->employee_code}}</a>
@@ -122,19 +118,26 @@
                                                 <td>{{$employee->email}}</td>
                                                 <td>{{$employee->qualification}}</td>
                                                 <td>{{$employee->joining_date}}</td>
-                                                <td>
-                                                    <a href="{{route("admin.show-employee",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Employee">
+                                                <td class="text-center">
+                                                    <a href="{{route("admin.show-employee",$employee->employee_code)}}" class="fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="View / Edit Employee">
                                                         <i class="mdi mdi-square-edit-outline"></i>
                                                     </a>
                                                     @if (count($employee->salary))
-                                                        <a href="{{route("admin.edit-salary",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Salary">
+                                                        <a href="{{route("admin.edit-salary",$employee->employee_code)}}" class="fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="View / Edit Salary">
                                                             <i class="mdi mdi-account-cash-outline"></i>
                                                         </a>
+                                                        <a href="{{route("admin.pay-salary",$employee->employee_code)}}" class="fs-3" data-bs-toggle="tooltip" data-bs-placement="top" title="Pay Salary">
+                                                            <i class="mdi mdi-cash-check"></i>
+                                                        </a>
                                                     @else
-                                                        <a href="{{route("admin.create-salary",$employee->employee_code)}}" class="fs-5" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Salary">
+                                                        <a href="{{route("admin.create-salary",$employee->employee_code)}}" class="fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="Add Salary">
                                                             <i class="mdi mdi-account-cash-outline"></i>
                                                         </a>
                                                     @endif
+                                                    <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none fs-5 p-0 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Employee" onclick="deleteConfirm('{{$employee->employee_code}}')"><i class="mdi mdi-delete"></i></button>
+                                                    <form id="delete-employee-form" action="{{ route('admin.delete-employee', $employee->employee_code) }}" method="POST" style="display: none;">
+                                                        @csrf
+                                                    </form>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -205,7 +208,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="choices-school-input" class="form-label">School Name*</label>
-                                    <select class="form-select" name="school" id="choices-school-input" data-choices data-choices-search-false required>
+                                    <select class="form-control" name="school" id="choices-school-input" data-choices data-choices-sorting-false required>
                                         <option value="IST" selected>IST</option>
                                         <option value="Alhaz Mokbul Hossain University">Alhaz Mokbul Hossain University</option>
                                     </select>
@@ -214,7 +217,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="choices-department-input" class="form-label">Department*</label>
-                                    <select class="form-select" name="department" id="choices-department-input" data-choices data-choices-search-false required>
+                                    <select class="form-control" name="department" id="choices-department-input" data-choices data-choices-sorting-false required>
                                         <option value="Computer Science & Engineering" selected>Computer Science & Engineering</option>
                                         <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
                                         <option value="Business Administration">Business Administration</option>
@@ -224,7 +227,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="designation-input" class="form-label">Designation*</label>
-                                    <select class="form-select" name="designation" id="designation-input" data-choices data-choices-search-false required>
+                                    <select class="form-control" name="designation" id="designation-input" data-choices data-choices-sorting-false required>
                                         <option value="Associate Professor" selected>Associate Professor</option>
                                         <option value="Lecturer">Lecturer</option>
                                         <option value="Faculty Member">Faculty Member</option>
@@ -235,7 +238,7 @@
                             <div class="col-lg-6">
                                 <div class="mb-3">
                                     <label for="educational-qualification-input" class="form-label">Educational Qualification*</label>
-                                    <select class="form-select" name="qualification" id="educational-qualification-input" data-choices data-choices-search-false required>
+                                    <select class="form-control" name="qualification" id="educational-qualification-input" data-choices data-choices-sorting-false required>
                                         <option value="MPhil">MPhil</option>
                                         <option value="MSc in CSE" selected>MSc in CSE</option>
                                         <option value="MBA">MBA</option>
@@ -354,67 +357,15 @@
             $("#create-employee-button").attr("disabled", true);
             $("#create-employee-button-spinner").addClass("btn-spinner");
         });
-        // $(document).on("click", "#gross_salary-input", function() {
-        //     let gross_salary = 0;
-        //     let net_salary = 0;
-        //     let basic   = document.getElementById("basic-salary-input").value;
-        //     let house   = document.getElementById("house-rent-input").value;
-        //     let medical = document.getElementById("medical-input").value;
-        //     let conveyance = document.getElementById("conveyance-input").value;
-        //     let spacial = document.getElementById("special_bonus-input").value;
-        //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-        //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
-
-        //     let provident = document.getElementById("provident-fund-input").value;
-        //     let gas = document.getElementById("gas-input").value;
-        //     let electricity = document.getElementById("electricity-input").value;
-        //     let water = document.getElementById("water-input").value;
-        //     let insurance = document.getElementById("insurance-input").value;
-        //     let welfare = document.getElementById("welfare-input").value;
-        //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-        //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-        // });
-        // $(document).on("click", "#net_salary-input", function() {
-        //     let gross_salary = 0;
-        //     let net_salary = 0;
-        //     let basic   = document.getElementById("basic-salary-input").value;
-        //     let house   = document.getElementById("house-rent-input").value;
-        //     let medical = document.getElementById("medical-input").value;
-        //     let conveyance = document.getElementById("conveyance-input").value;
-        //     let spacial = document.getElementById("special_bonus-input").value;
-        //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-        //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
-
-        //     let provident = document.getElementById("provident-fund-input").value;
-        //     let gas = document.getElementById("gas-input").value;
-        //     let electricity = document.getElementById("electricity-input").value;
-        //     let water = document.getElementById("water-input").value;
-        //     let insurance = document.getElementById("insurance-input").value;
-        //     let welfare = document.getElementById("welfare-input").value;
-        //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-        //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-        // });
     });
-    // function myAutoFill(){
-    //     let gross_salary = 0;
-    //     let net_salary = 0;
-    //     let basic   = document.getElementById("basic-salary-input").value;
-    //     let house   = document.getElementById("house-rent-input").value;
-    //     let medical = document.getElementById("medical-input").value;
-    //     let conveyance = document.getElementById("conveyance-input").value;
-    //     let spacial = document.getElementById("special_bonus-input").value;
-    //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-    //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
-
-    //     let provident = document.getElementById("provident-fund-input").value;
-    //     let gas = document.getElementById("gas-input").value;
-    //     let electricity = document.getElementById("electricity-input").value;
-    //     let water = document.getElementById("water-input").value;
-    //     let insurance = document.getElementById("insurance-input").value;
-    //     let welfare = document.getElementById("welfare-input").value;
-    //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-    //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-    // }
-    // myAutoFill();
+    function deleteConfirm(code){
+        event.preventDefault();
+        var proceed = confirm(`Are you sure you want to delete Employee ID:- ${code}?`);
+        if (proceed) {
+            document.getElementById('delete-employee-form').submit();
+        } else {
+        //don't proceed
+        }
+    }
 </script>
 @endsection

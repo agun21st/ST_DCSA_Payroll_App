@@ -182,8 +182,18 @@ class EmployeeController extends Controller
      * @param  \App\Models\Admin\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy($id)
     {
-        //
+        $getEmployee = Employee::where("employee_code",request()->id)->first();
+        if($getEmployee){
+            $getEmployee->delete();
+            return redirect()->route('admin.employee-list')->with('success', 'Employee deleted successfully done');
+        }
+    }
+
+    public function dashboard()
+    {
+        $totalEmployee = Employee::all()->count();
+        return view('backend.pages.dashboard', compact('totalEmployee'));
     }
 }
