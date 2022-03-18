@@ -21,6 +21,7 @@ class CreatePaymentsTable extends Migration
             $table->string("payment_date")->nullable();
             $table->string("payment_month")->nullable();
             $table->string("payment_year")->nullable();
+            $table->string("serial_no")->nullable();
             $table->string("status")->default("unpaid");
             $table->timestamps();
         });

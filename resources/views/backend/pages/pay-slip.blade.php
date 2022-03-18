@@ -18,9 +18,13 @@
 
                     </div>
                 </div>
-                <div class="col-12 d-print-none">
+                <div class="col-12 d-print-none d-flex justify-content-between">
                     <div class="mb-3">
-                        <a href="{{route('admin.employee-list')}}" class="btn btn-primary bg-gradient waves-effect waves-light"><i
+                        <a href="{{route('admin.pay-salary',$getSalaryInfo->employee_code)}}" class="btn btn-primary bg-gradient waves-effect waves-light"><i
+                                class="mdi mdi-keyboard-backspace align-bottom me-1"></i> Back</a>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{{route('admin.employee-list')}}" class="btn btn-secondary bg-gradient waves-effect waves-light"><i
                                 class="mdi mdi-keyboard-backspace align-bottom me-1"></i> All Employee</a>
                     </div>
                 </div>
@@ -38,8 +42,7 @@
                                 </div>
                                 <div class="">
                                     <h6 class="text-muted text-uppercase fw-semibold">Address</h6>
-                                    <p class="text-muted mb-1">Board Bazar, Gazipur-1705,</p>
-                                    <p class="text-muted mb-0">Bangladesh</p>
+                                    <p class="text-muted mb-1">Board Bazar, Gazipur-1705, Bangladesh</p>
                                     <p class="text-muted mb-0">Phone: 88-02-9291112, 09666730730 Ex.105</p>
                                 </div>
                             </div>
@@ -52,24 +55,25 @@
                                 </div><!--end col-->
                                 <div class="col-12">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <p class="text-muted mb-2 text-uppercase fw-semibold">Slip No</p>
-                                            <h5 class="fs-14 mb-3">#SL{{rand(10000000, 99999000)}}</h5>
+                                            <h5 class="fs-14 mb-3">#{{$getSalaryInfo->serial_no}}</h5>
                                             <p class="text-muted mb-2 text-uppercase fw-semibold">Date</p>
                                             <h5 class="fs-14 mb-0">{{$getSalaryInfo->created_at}}</h5>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <p class="text-muted mb-2 text-uppercase fw-semibold">Payment Status</p>
                                             <span class="badge badge-soft-success fs-11 mb-3">{{$getSalaryInfo->status}}</span>
                                             <p class="text-muted mb-2 text-uppercase fw-semibold">Total Amount</p>
                                             <h5 class="fs-14 mb-0">৳{{$getSalaryInfo->salary->net_salary}}</h5>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-6">
                                             <h6 class="text-muted text-uppercase fw-semibold mb-3">
                                                 Employee Details
                                             </h6>
                                             <p class="fw-medium mb-2">Employee ID: {{$getSalaryInfo->employee_code}}</p>
                                             <p class="text-muted mb-1"><strong>Name:</strong> {{$getSalaryInfo->employee->name}}</p>
+                                            <p class="text-muted mb-1"><strong>School:</strong> {{$getSalaryInfo->employee->school}}</p>
                                             <p class="text-muted mb-1"><strong>Designation:</strong> {{$getSalaryInfo->employee->designation}}</p>
                                             <p class="text-muted mb-1"><strong>Department:</strong> {{$getSalaryInfo->employee->department}}</p>
                                             <p class="text-muted mb-0"><strong>Date of Joining:</strong> {{$getSalaryInfo->employee->joining_date}}</p>
@@ -92,27 +96,29 @@
                                     </thead> --}}
                                     <tbody>
                                         <tr>
-                                            <th scope="row">Basic</th>
+                                            <th scope="row text-end">
+                                                <span>Basic</span>
+                                            </th>
                                             <td class="text-end">
                                                 <span class="fw-medium text-end">৳{{$getSalaryInfo->salary->basic}}</span>
                                             </td>
-                                            <th scope="row">House_Rent</th>
+                                            <th scope="row text-end">House_Rent</th>
                                             <td class="text-end">৳{{$getSalaryInfo->salary->house_rent}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Medical</th>
+                                            <th scope="row text-end">Medical</th>
                                             <td class="text-end">
                                                 <span class="fw-medium text-end">৳{{$getSalaryInfo->salary->medical}}</span>
                                             </td>
-                                            <th scope="row">Mobile</th>
+                                            <th scope="row text-end">Mobile</th>
                                             <td class="text-end">৳{{$getSalaryInfo->salary->mobile}}</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">Provident_Fund</th>
+                                            <th scope="row text-end">Provident_Fund</th>
                                             <td class="text-end">
                                                 <span class="fw-medium text-end">৳{{$getSalaryInfo->salary->provident_fund}}</span>
                                             </td>
-                                            <th scope="row">welfare</th>
+                                            <th scope="row text-end">welfare</th>
                                             <td class="text-end">৳{{$getSalaryInfo->salary->welfare}}</td>
                                         </tr>
                                         <tr class="border-top border-top-dashed mt-2">

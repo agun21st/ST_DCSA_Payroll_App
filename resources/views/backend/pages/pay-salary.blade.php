@@ -326,6 +326,7 @@
                             <div class="col-lg-12">
                                 <div class="hstack gap-2 justify-content-end">
                                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                    <input type="hidden" name="serial_no" value="SL{{rand(10000000, 99999000)}}" required>
                                     <input type="hidden" name="employee_id" value="{{$getEmployee->id}}" required>
                                     <input type="hidden" name="employee_code" value="{{$getEmployee->employee_code}}" required>
                                     <input type="hidden" name="salary_id" value="{{$getEmployee->salary[0]->id}}" required>

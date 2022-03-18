@@ -18,6 +18,7 @@ class Payment extends Model
         'payment_date',
         'payment_month',
         'payment_year',
+        'serial_no',
         'status',
     ];
 
