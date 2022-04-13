@@ -228,7 +228,7 @@
                                                 <td>{{$salaryList->created_at}}</td>
                                                 <td class="text-center">
                                                     <a href="{{route("admin.pay-slip",$salaryList->id)}}" class="fs-4" data-bs-toggle="tooltip" data-bs-placement="top" title="View Pay Slip">
-                                                        <i class="mdi mdi-square-edit-outline"></i>
+                                                        <i class="mdi mdi-file-document-outline"></i>
                                                     </a>
                                                     {{-- <button type="button" class="btn btn-ghost-danger waves-effect waves-light shadow-none fs-5 p-0 mb-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Employee" onclick="deleteConfirm('{{$employee->employee_code}}')"><i class="mdi mdi-delete"></i></button>
                                                     <form id="delete-employee-form" action="{{ route('admin.delete-employee', $employee->employee_code) }}" method="POST" style="display: none;">
@@ -354,46 +354,6 @@
                 $("#pay-salary-button").attr("disabled", true);
                 $("#pay-salary-button-spinner").addClass("btn-spinner");
             });
-            // $(document).on("click", "#gross_salary-input", function() {
-            //     let gross_salary = 0;
-            //     let net_salary = 0;
-            //     let basic   = document.getElementById("basic-salary-input").value;
-            //     let house   = document.getElementById("house-rent-input").value;
-            //     let medical = document.getElementById("medical-input").value;
-            //     let conveyance = document.getElementById("conveyance-input").value;
-            //     let spacial = document.getElementById("special_bonus-input").value;
-            //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-            //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
-
-            //     let provident = document.getElementById("provident-fund-input").value;
-            //     let gas = document.getElementById("gas-input").value;
-            //     let electricity = document.getElementById("electricity-input").value;
-            //     let water = document.getElementById("water-input").value;
-            //     let insurance = document.getElementById("insurance-input").value;
-            //     let welfare = document.getElementById("welfare-input").value;
-            //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-            //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-            // });
-            // $(document).on("click", "#net_salary-input", function() {
-            //     let gross_salary = 0;
-            //     let net_salary = 0;
-            //     let basic   = document.getElementById("basic-salary-input").value;
-            //     let house   = document.getElementById("house-rent-input").value;
-            //     let medical = document.getElementById("medical-input").value;
-            //     let conveyance = document.getElementById("conveyance-input").value;
-            //     let spacial = document.getElementById("special_bonus-input").value;
-            //     gross_salary = parseInt(basic)+parseInt(house)+parseInt(medical)+parseInt(conveyance)+parseInt(spacial);
-            //     document.getElementById("gross_salary-input").value = parseInt(gross_salary);
-
-            //     let provident = document.getElementById("provident-fund-input").value;
-            //     let gas = document.getElementById("gas-input").value;
-            //     let electricity = document.getElementById("electricity-input").value;
-            //     let water = document.getElementById("water-input").value;
-            //     let insurance = document.getElementById("insurance-input").value;
-            //     let welfare = document.getElementById("welfare-input").value;
-            //     net_salary = parseInt(provident)+parseInt(gas)+parseInt(electricity)+parseInt(water)+parseInt(insurance)+parseInt(welfare);
-            //     document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(net_salary);
-            // });
         });
         function myAutoFill(){
             let basicSalary = parseInt(document.getElementById("basic-salary-input").value)
@@ -414,17 +374,6 @@
             document.getElementById("welfare-input").value = welfare_amount;
             deduction = parseInt(provident_amount)+parseInt(welfare_amount);
             document.getElementById("net_salary-input").value = parseInt(gross_salary)-parseInt(deduction);
-
-            // let gross_salary = 0;
-            // let net_salary = 0;
-            // let basic   = document.getElementById("basic-salary-input").value;
-            // let conveyance = document.getElementById("conveyance-input").value;
-            // let spacial = document.getElementById("special_bonus-input").value;
-
-            // let gas = document.getElementById("gas-input").value;
-            // let electricity = document.getElementById("electricity-input").value;
-            // let water = document.getElementById("water-input").value;
-            // let insurance = document.getElementById("insurance-input").value;
         }
         myAutoFill();
     </script>

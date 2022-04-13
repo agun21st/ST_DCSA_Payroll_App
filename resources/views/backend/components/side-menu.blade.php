@@ -1,7 +1,7 @@
 <!-- ========== App Menu ========== -->
 <div class="app-menu navbar-menu">
     <!-- LOGO -->
-    <div class="navbar-brand-box">
+    <div class="navbar-brand-box" style="padding-left: 0">
         <!-- Dark Logo-->
         <a href="{{route('admin.dashboard')}}" class="logo logo-dark">
             <span class="logo-sm">
