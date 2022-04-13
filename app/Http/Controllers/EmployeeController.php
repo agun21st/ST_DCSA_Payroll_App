@@ -196,4 +196,23 @@ class EmployeeController extends Controller
         $totalEmployee = Employee::all()->count();
         return view('backend.pages.dashboard', compact('totalEmployee'));
     }
+
+    public function reports()
+    {
+        $getEmployee = Employee::with('salary')->latest()->paginate(5);
+        return view('backend.pages.reports', compact('getEmployee'));
+    }
+
+    public function reportsBySchool(Request $request)
+    {
+        // dd($request->all())
+        $getEmployees = Employee::with('salary')->where('school',$request->school)->get();
+        return $getEmployees;
+    }
+    public function reportsByDepartment(Request $request)
+    {
+        // dd($request->all())
+        $getEmployees = Employee::with('salary')->where('department',$request->department)->get();
+        return $getEmployees;
+    }
 }

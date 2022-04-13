@@ -59,6 +59,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         Route::get('/employee-list', [EmployeeController::class, 'index'])->name('employee-list');
         Route::get('/show-employee/{id}', [EmployeeController::class, 'show'])->name('show-employee');
+        Route::get('/reports', [EmployeeController::class, 'reports'])->name('report.page');
+        Route::post('/report-by-school', [EmployeeController::class, 'reportsBySchool'])->name('report.school');
+        Route::post('/report-by-department', [EmployeeController::class, 'reportsByDepartment'])->name('report.department');
 
         Route::get('/create-salary/{id}', [SalaryController::class, 'show'])->name('create-salary');
         Route::post('/add-salary', [SalaryController::class, 'store'])->name('add-salary');
@@ -68,7 +71,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/pay-salary/{id}', [PaymentController::class, 'show'])->name('pay-salary');
         Route::post('/add-pay-salary', [PaymentController::class, 'store'])->name('add-pay-salary');
         Route::get('/pay-slip/{id}', [PaymentController::class, 'paySlip'])->name('pay-slip');
-        
+
 
         Route::get('/create-employee', [EmployeeController::class, 'create'])->name('create-employee');
         Route::post('/add-employee', [EmployeeController::class, 'store'])->name('add-employee');

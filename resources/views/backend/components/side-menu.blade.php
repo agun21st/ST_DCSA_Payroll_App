@@ -43,7 +43,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link menu-link active" href="{{route('admin.employee-list')}}">
+                    <a class="nav-link menu-link active" href="{{route('admin.report.page')}}">
                         <i class="mdi mdi-file-document-multiple-outline"></i> <span data-key="t-reports">Reports</span>
                     </a>
                 </li>

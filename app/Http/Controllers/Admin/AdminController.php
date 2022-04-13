@@ -46,7 +46,7 @@ class AdminController extends Controller
 
         if (Auth::guard("admin")->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->route('admin.dashboard');
+            return redirect()->route('admin.employee-list');
         }else {
             return redirect()->route('admin.login')->with('fail','The provided credentials do not match our records.')->withInput();
         }
