@@ -84,7 +84,7 @@
                         </div><!--end card-body-->
                         <div class="card-body p-4 border-top border-top-dashed">
                             <div class="table-responsive">
-                                <table class="table table-borderless text-center table-nowrap align-middle mb-0">
+                                <table class="table table-borderless text-center table-nowrap align-middle mb-0 table-sm">
                                     {{-- <thead>
                                         <tr class="table-active">
                                             <th scope="col" style="width: 50px;">#</th>
@@ -124,7 +124,7 @@
                                         <tr class="border-top border-top-dashed mt-2">
                                             <td colspan="3"></td>
                                             <td colspan="2" class="fw-medium p-0">
-                                                <table class="table table-borderless text-start table-nowrap align-middle mb-0">
+                                                <table class="table table-borderless text-start table-nowrap align-middle mb-0 table-sm">
                                                     <tbody>
                                                         <tr>
                                                             <td>Gross_Salary</td>

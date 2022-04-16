@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Salary;
 use Illuminate\Http\Request;
 use App\Models\Admin\Employee;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $getEmployee = Employee::with('salary')->latest()->paginate(5);
+        $getEmployee = Employee::with('salary')->latest()->paginate(20);
         return view('backend.pages.employees', compact('getEmployee'));
     }
 
@@ -199,7 +200,7 @@ class EmployeeController extends Controller
 
     public function reports()
     {
-        $getEmployee = Employee::with('salary')->latest()->paginate(5);
+        $getEmployee = Employee::with('salary')->latest()->paginate(20);
         return view('backend.pages.reports', compact('getEmployee'));
     }
 
@@ -213,6 +214,26 @@ class EmployeeController extends Controller
     {
         // dd($request->all())
         $getEmployees = Employee::with('salary')->where('department',$request->department)->get();
+        return $getEmployees;
+    }
+    public function searchById(Request $request)
+    {
+        // dd($request->all())
+        $getEmployee = Employee::with('salary')->where('employee_code','LIKE','%'.$request->employee_code.'%')->first();
+        return $getEmployee;
+    }
+    public function lessBasic(Request $request)
+    {
+        // dd($request->all())
+        $getEmployees = Salary::with('employee')->where('basic', '<=', $request->basic)->get();
+        // $getEmployees = Employee::with('salary')->where('basic','=<',$request->lessBasic)->get();
+        return $getEmployees;
+    }
+    public function moreBasic(Request $request)
+    {
+        // dd($request->all())
+        $getEmployees = Salary::with('employee')->where('basic', '>=', $request->basic)->get();
+        // $getEmployees = Employee::with('salary')->where('basic','=<',$request->lessBasic)->get();
         return $getEmployees;
     }
 }

@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="author" content="Md.M.H.Razib DCSA-IST-2019 Mobile:+8801712834621  | Web Developer @ Creative IT Institution">
     {{-- <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script> --}}
     <script src="{{asset('js/pace.min.js')}}"></script>
     <link rel="stylesheet" href="{{asset('css/flash.css')}}">

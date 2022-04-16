@@ -70,7 +70,13 @@
                                             <label for="choices-school-input" class="form-label">School Name*</label>
                                             <select class="form-control" name="school" id="choices-school-input" data-choices data-choices-sorting-false required>
                                                 <option value="IST" {{$getEmployee->school==="IST"?"selected":""}}>IST</option>
-                                                <option value="Alhaz Mokbul Hossain University" {{$getEmployee->school==="Alhaz Mokbul Hossain University"?"selected":""}}>Alhaz Mokbul Hossain University</option>
+                                                <option value="DU" {{$getEmployee->school==="DU"?"selected":""}}>DU</option>
+                                                <option value="DUET" {{$getEmployee->school==="DUET"?"selected":""}}>DUET</option>
+                                                <option value="MAIT" {{$getEmployee->school==="MAIT"?"selected":""}}>MAIT</option>
+                                                <option value="RU" {{$getEmployee->school==="RU"?"selected":""}}>RU</option>
+                                                <option value="IIUC" {{$getEmployee->school==="IIUC"?"selected":""}}>IIUC</option>
+                                                <option value="CUET" {{$getEmployee->school==="CUET"?"selected":""}}>CUET</option>
+                                                <option value="KUET" {{$getEmployee->school==="KUET"?"selected":""}}>KUET</option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,6 +87,9 @@
                                                 <option value="Computer Science & Engineering" {{$getEmployee->department==="Computer Science & Engineering"?"selected":""}}>Computer Science & Engineering</option>
                                                 <option value="Electronics & Communication Engineering" {{$getEmployee->department==="Electronics & Communication Engineering"?"selected":""}}>Electronics & Communication Engineering</option>
                                                 <option value="Business Administration" {{$getEmployee->department==="Business Administration"?"selected":""}}>Business Administration</option>
+                                                <option value="Diploma in Computer Science & Application" {{$getEmployee->department==="Diploma in Computer Science & Application"?"selected":""}}>Diploma in Computer Science & Application</option>
+                                                <option value="BBA" {{$getEmployee->department==="BBA"?"selected":""}}>BBA</option>
+                                                <option value="Administration" {{$getEmployee->department==="Administration"?"selected":""}}>Administration</option>
                                             </select>
                                         </div>
                                     </div>
@@ -92,6 +101,8 @@
                                                 <option value="Lecturer" {{$getEmployee->designation==="Lecturer"?"selected":""}}>Lecturer</option>
                                                 <option value="Faculty Member" {{$getEmployee->designation==="Faculty Member"?"selected":""}}>Faculty Member</option>
                                                 <option value="Office Staff" {{$getEmployee->designation==="Office Staff"?"selected":""}}>Office Staff</option>
+                                                <option value="Professor" {{$getEmployee->designation==="Professor"?"selected":""}}>Professor</option>
+                                                <option value="Senior Lecturer" {{$getEmployee->designation==="Senior Lecturer"?"selected":""}}>Senior Lecturer</option>
                                             </select>
                                         </div>
                                     </div>

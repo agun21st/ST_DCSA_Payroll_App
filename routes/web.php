@@ -62,6 +62,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/reports', [EmployeeController::class, 'reports'])->name('report.page');
         Route::post('/report-by-school', [EmployeeController::class, 'reportsBySchool'])->name('report.school');
         Route::post('/report-by-department', [EmployeeController::class, 'reportsByDepartment'])->name('report.department');
+        Route::post('/report-by-lessBasic', [EmployeeController::class, 'lessBasic'])->name('report.lessBasic');
+        Route::post('/report-by-moreBasic', [EmployeeController::class, 'moreBasic'])->name('report.moreBasic');
+        Route::post('/employee-search-by-id', [EmployeeController::class, 'searchById'])->name('report.searchById');
 
         Route::get('/create-salary/{id}', [SalaryController::class, 'show'])->name('create-salary');
         Route::post('/add-salary', [SalaryController::class, 'store'])->name('add-salary');

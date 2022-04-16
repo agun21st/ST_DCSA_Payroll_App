@@ -206,7 +206,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table align-middle mb-0">
+                                    <table class="table align-middle mb-0 table-sm table-hover">
                                         <thead class="table-light">
                                             <tr>
                                                 <th scope="col">ID</th>
